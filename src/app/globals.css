@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+:root {
+  --background: #fffdf7;
+  --foreground: #263447;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-heading: var(--font-playfair);
+  --font-subheading: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4a017 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #d4a017;
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::selection {
+  background: #f8e7b2;
+  color: #071827;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+}
