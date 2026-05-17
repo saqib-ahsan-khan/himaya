@@ -29,6 +29,9 @@ export async function POST(req: NextRequest) {
     const utmSource = body.utmSource || "";
     const utmMedium = body.utmMedium || "";
     const utmCampaign = body.utmCampaign || "";
+    const utmContent = body.utmContent || "";
+    const utmTerm = body.utmTerm || "";
+    const gclid = body.gclid || "";
 
     const lead: BookingLead = {
       fullName: data.fullName,
@@ -46,6 +49,9 @@ export async function POST(req: NextRequest) {
       utmSource,
       utmMedium,
       utmCampaign,
+      utmContent,
+      utmTerm,
+      gclid,
       source: "booking_form",
       createdAt: now,
       updatedAt: now,

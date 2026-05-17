@@ -1,24 +1,21 @@
 "use client";
 
+import { getStoredUTMs } from "@/lib/utm";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
-function sessionGet(key: string): string {
-  if (typeof window === "undefined") return "";
-  try {
-    return sessionStorage.getItem(key) || "";
-  } catch {
-    return "";
-  }
-}
-
 export function useUTM() {
   const params = useSearchParams();
+
   return useMemo(() => {
+    const stored = getStoredUTMs();
     return {
-      utmSource: params.get("utm_source") || sessionGet("utm_source"),
-      utmMedium: params.get("utm_medium") || sessionGet("utm_medium"),
-      utmCampaign: params.get("utm_campaign") || sessionGet("utm_campaign"),
+      utmSource: params.get("utm_source") || stored.utmSource,
+      utmMedium: params.get("utm_medium") || stored.utmMedium,
+      utmCampaign: params.get("utm_campaign") || stored.utmCampaign,
+      utmContent: params.get("utm_content") || stored.utmContent,
+      utmTerm: params.get("utm_term") || stored.utmTerm,
+      gclid: params.get("gclid") || stored.gclid,
     };
   }, [params]);
 }

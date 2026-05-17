@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Resources | HIMAYA",
   description: "Guides and resources for governance, control drift and evidence discipline.",
-};
+  path: "/resources",
+});
 
 export default function ResourcesPage() {
   return (

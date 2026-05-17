@@ -1,5 +1,7 @@
 "use client";
 
+import { SessionProvider } from "next-auth/react";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import { BookingModal } from "@/components/modals/BookingModal";
 import { ToastContainer } from "@/components/ui/Toast";
 import { UTMCapture } from "@/components/UTMCapture";
@@ -9,13 +11,16 @@ import type { ReactNode } from "react";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <ToastProvider>
-      <BookingProvider>
-        <UTMCapture />
-        {children}
-        <BookingModal />
-        <ToastContainer />
-      </BookingProvider>
-    </ToastProvider>
+    <SessionProvider>
+      <ToastProvider>
+        <BookingProvider>
+          <UTMCapture />
+          {children}
+          <BookingModal />
+          <ChatWidget />
+          <ToastContainer />
+        </BookingProvider>
+      </ToastProvider>
+    </SessionProvider>
   );
 }

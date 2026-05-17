@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Terms of Service | HIMAYA",
-  description: "Service terms, boundaries, liability and governing law for HIMAYA services.",
-};
+  description: "HIMAYA terms of service including service scope, limitations and governing law.",
+  path: "/terms",
+});
 
 const sections = [
   {

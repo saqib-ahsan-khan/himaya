@@ -53,3 +53,49 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
 }
+
+.article-rich-text p {
+  margin-bottom: 1rem;
+}
+
+.article-rich-text p:last-child {
+  margin-bottom: 0;
+}
+
+.article-rich-text h2,
+.article-rich-text h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-playfair), serif;
+  font-weight: 700;
+  color: #071827;
+}
+
+.article-rich-text h2 {
+  font-size: 1.35rem;
+}
+
+.article-rich-text h3 {
+  font-size: 1.15rem;
+}
+
+.article-rich-text ul,
+.article-rich-text ol {
+  margin: 0 0 1rem 1.25rem;
+}
+
+.article-rich-text li {
+  margin-bottom: 0.35rem;
+}
+
+.article-rich-text blockquote {
+  margin: 1rem 0;
+  border-left: 3px solid #d4a017;
+  padding-left: 1rem;
+  font-style: italic;
+}
+
+.article-rich-text strong {
+  font-weight: 600;
+  color: #071827;
+}

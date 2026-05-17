@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
 import { BookDemoTrigger } from "@/components/BookDemoTrigger";
 import { GoldDash } from "@/components/ui/Icons";
 import ListItem from "@/components/ui/ListItem";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Industries | HIMAYA Regulated Assurance",
   description:
     "HIMAYA serves FCA-regulated firms, law firms, accounting firms and UK GDPR-sensitive SMEs with continuous regulatory assurance.",
-};
+  path: "/industries",
+});
 
 const industries = [
   {

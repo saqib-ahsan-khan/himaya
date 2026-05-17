@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import { GreenCheck, GoldShieldCheck, MutedDash } from "@/components/ui/Icons";
 import ListItem from "@/components/ui/ListItem";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Trust & Security | HIMAYA",
-  description: "How HIMAYA handles website data, protects submissions and maintains security hygiene.",
-};
+  description:
+    "How HIMAYA handles website data, protects form submissions and maintains security hygiene on our platform.",
+  path: "/trust",
+});
 
 const dataHandling = [
   "What we collect: name, email, company, role and concern details submitted through forms.",

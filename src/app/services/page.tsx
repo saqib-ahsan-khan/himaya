@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
 import { BookDemoTrigger } from "@/components/BookDemoTrigger";
 import { GoldArrow, MutedX } from "@/components/ui/Icons";
 import ListItem from "@/components/ui/ListItem";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "HIMAYA Services | GRC, vCISO Lite and Evidence-Based Compliance",
-  description: "Structured assurance services for regulated SMEs that need oversight without a full internal compliance team.",
-};
+  description:
+    "Structured assurance services for regulated SMEs. ATLAS, Human Firewall, remediation tracking, evidence library and board reporting.",
+  path: "/services",
+});
 
 const services = [
   {

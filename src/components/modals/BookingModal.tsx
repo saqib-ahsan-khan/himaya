@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useBooking } from "@/context/BookingContext";
 import { useUTM } from "@/hooks/useUTM";
 import { useToast } from "@/hooks/useToast";
+import { analytics } from "@/lib/analytics";
 import { bookingSchema, type BookingFormData } from "@/lib/schemas";
 
 const industryOptions = [
@@ -56,7 +57,7 @@ export function BookingModal() {
 
 function BookingModalInner() {
   const { isOpen, closeModal } = useBooking();
-  const { utmSource, utmMedium, utmCampaign } = useUTM();
+  const { utmSource, utmMedium, utmCampaign, utmContent, utmTerm, gclid } = useUTM();
   const { success: toastSuccess } = useToast();
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -86,6 +87,7 @@ function BookingModalInner() {
 
   useEffect(() => {
     if (!isOpen) return;
+    analytics.bookingModalOpened();
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
@@ -128,12 +130,16 @@ function BookingModalInner() {
           utmSource,
           utmMedium,
           utmCampaign,
+          utmContent,
+          utmTerm,
+          gclid,
         }),
       });
       if (!res.ok) {
         setSubmitError("Something went wrong. Please email contact@himaya.uk directly.");
         return;
       }
+      analytics.bookingFormSubmitted(data.industry);
       setFirstName(data.fullName.split(/\s+/)[0] || data.fullName);
       setConfirmEmail(data.workEmail);
       setSuccess(true);

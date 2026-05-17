@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import { BookDemoTrigger } from "@/components/BookDemoTrigger";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { GreenCheck, RedX } from "@/components/ui/Icons";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "About HIMAYA | Continuous Regulatory Assurance",
+export const metadata = buildPageMetadata({
+  title: "About HIMAYA | Our Mission and Approach",
   description:
-    "Why HIMAYA exists, our mission and how we help regulated SMEs move from reactive compliance to continuous regulatory assurance.",
-};
+    "Why HIMAYA exists and how we help regulated SMEs move from reactive compliance to continuous regulatory assurance.",
+  path: "/about",
+});
 
 const gapStats = [
   {

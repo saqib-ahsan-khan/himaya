@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
+import { ConsentGoogleAnalytics } from "@/components/analytics/ConsentGoogleAnalytics";
 import { Providers } from "@/components/Providers";
-import { Footer } from "@/components/layout/Footer";
-import { Navbar } from "@/components/layout/Navbar";
+import { LayoutSwitcher } from "@/components/layout/LayoutSwitcher";
+import { OrganizationJsonLd } from "@/components/seo/JsonLd";
+import { CookieNotice } from "@/components/ui/CookieNotice";
 import "./globals.css";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://himaya.uk";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -21,13 +25,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HIMAYA - Continuous Regulatory Assurance for Regulated SMEs",
-  description:
-    "Detect control drift, track remediation, capture evidence and improve board-level regulatory visibility.",
+  metadataBase: new URL(BASE_URL),
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png" }],
-    shortcut: ["/favicon.png"],
-    apple: [{ url: "/favicon.png", type: "image/png" }],
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -38,16 +39,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}>
+      <head>
+        <OrganizationJsonLd />
+      </head>
       <body className="min-h-full font-subheading text-slateText">
         <Providers>
-          <div className="min-h-screen bg-ivoryWhite">
-            <Navbar />
-            <div className="flex min-h-screen flex-col pt-24">
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
-          </div>
+          <LayoutSwitcher>{children}</LayoutSwitcher>
+          <CookieNotice />
         </Providers>
+        <ConsentGoogleAnalytics />
       </body>
     </html>
   );

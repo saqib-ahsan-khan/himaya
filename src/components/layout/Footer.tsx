@@ -15,8 +15,12 @@ const footerSections = [
     links: ["FCA-Regulated Firms", "Law Firms (SRA)", "Accounting Firms", "UK GDPR SMEs", "ISO 27001"],
   },
   {
+    title: "RESOURCES",
+    links: ["FCA Regulatory Insights", "Enforcement Lessons", "Control Drift Checklist", "Resources Hub"],
+  },
+  {
     title: "COMPANY",
-    links: ["About HIMAYA", "How It Works", "Resources", "Book a Demo", "Contact"],
+    links: ["About HIMAYA", "How It Works", "Book a Demo", "Contact"],
   },
 ];
 
@@ -29,7 +33,7 @@ export function Footer() {
   return (
     <footer className="border-t border-metallicGold/20 bg-deepNavy pb-8 pt-[60px]">
       <div className="mx-auto w-full max-w-7xl px-6">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="space-y-4">
             <div className="flex items-center">
               <picture>

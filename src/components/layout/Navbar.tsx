@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { BookDemoTrigger } from "@/components/BookDemoTrigger";
 
 const navLinks = [
@@ -12,13 +13,36 @@ const navLinks = [
   { label: "Services", href: "/services" },
   { label: "ATLAS", href: "/atlas" },
   { label: "Industries", href: "/industries" },
-  { label: "Resources", href: "/resources" },
 ];
+
+const resourceLinks = [
+  { label: "FCA Regulatory Insights", href: "/fca-insights" },
+  { label: "Control Drift Checklist", href: "/#control-drift-checklist" },
+];
+
+function NavLink({ href, label, pathname }: { href: string; label: string; pathname: string }) {
+  const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
+  return (
+    <li>
+      <Link
+        href={href}
+        className={`relative font-subheading text-[0.88rem] transition-colors duration-200 ${
+          isActive ? "font-semibold text-deepNavy" : "text-slateText hover:text-metallicGold"
+        }`}
+      >
+        {label}
+        {isActive && <motion.span layoutId="nav-active-underline" className="absolute -bottom-1 left-0 h-0.5 w-full bg-metallicGold" />}
+      </Link>
+    </li>
+  );
+}
 
 export function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const resourcesRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 60);
@@ -35,7 +59,18 @@ export function Navbar() {
     document.body.style.overflow = "auto";
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    const onClickOutside = (e: MouseEvent) => {
+      if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
+        setResourcesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
   const closeMenu = () => setIsMenuOpen(false);
+  const resourcesActive = pathname === "/resources" || pathname.startsWith("/fca-insights");
 
   return (
     <>
@@ -66,38 +101,48 @@ export function Navbar() {
           </Link>
 
           <ul className="hidden items-center gap-7 md:flex">
-            {navLinks.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <li key={item.href}>
+            {navLinks.map((item) => (
+              <NavLink key={item.href} {...item} pathname={pathname} />
+            ))}
+
+            <li ref={resourcesRef} className="relative">
+              <button
+                type="button"
+                onClick={() => setResourcesOpen((o) => !o)}
+                className={`inline-flex items-center gap-1 font-subheading text-[0.88rem] transition-colors ${
+                  resourcesActive ? "font-semibold text-deepNavy" : "text-slateText hover:text-metallicGold"
+                }`}
+              >
+                Resources
+                <ChevronDown size={14} className={`transition ${resourcesOpen ? "rotate-180" : ""}`} aria-hidden />
+              </button>
+              {resourcesOpen && (
+                <div className="absolute left-0 top-full z-50 mt-2 min-w-[220px] rounded-lg border border-deepNavy/10 bg-white py-2 shadow-lg">
+                  {resourceLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setResourcesOpen(false)}
+                      className="block px-4 py-2 text-sm text-slateText transition hover:bg-metallicGold/5 hover:text-metallicGold"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                   <Link
-                    href={item.href}
-                    className={`relative font-subheading text-[0.88rem] transition-colors duration-200 ${
-                      isActive ? "font-semibold text-deepNavy" : "text-slateText hover:text-metallicGold"
-                    }`}
+                    href="/resources"
+                    onClick={() => setResourcesOpen(false)}
+                    className="block border-t border-deepNavy/5 px-4 py-2 text-sm text-mutedText transition hover:text-metallicGold"
                   >
-                    {item.label}
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-active-underline"
-                        className="absolute -bottom-1 left-0 h-0.5 w-full bg-metallicGold"
-                      />
-                    )}
+                    All Resources
                   </Link>
-                </li>
-              );
-            })}
+                </div>
+              )}
+            </li>
+
+            <NavLink href="/fca-insights" label="FCA Insights" pathname={pathname} />
           </ul>
 
           <div className="hidden items-center gap-5 md:flex">
-            <Link
-              href="/enforcement-lessons"
-              className={`font-subheading text-sm transition-colors hover:text-metallicGold ${
-                pathname === "/enforcement-lessons" ? "font-semibold text-deepNavy" : "text-deepNavy"
-              }`}
-            >
-              Enforcement Lessons
-            </Link>
             <BookDemoTrigger className="rounded-md bg-gradient-to-br from-metallicGold to-luminousGold px-5 py-2.5 font-subheading text-sm font-bold text-deepNavy transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_24px_rgba(212,160,23,0.35)]">
               Book a Demo
             </BookDemoTrigger>
@@ -145,15 +190,28 @@ export function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.08 }}
                   >
-                    <Link
-                      href={item.href}
-                      onClick={closeMenu}
-                      className="font-heading text-[1.8rem] text-warmCream transition-colors hover:text-luminousGold"
-                    >
+                    <Link href={item.href} onClick={closeMenu} className="font-heading text-[1.8rem] text-warmCream transition-colors hover:text-luminousGold">
                       {item.label}
                     </Link>
                   </motion.li>
                 ))}
+                <motion.li initial={{ opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: navLinks.length * 0.08 }}>
+                  <p className="font-mono text-xs tracking-[0.2em] text-metallicGold">Resources</p>
+                  <ul className="mt-3 space-y-3 pl-2">
+                    {resourceLinks.map((link) => (
+                      <li key={link.href}>
+                        <Link href={link.href} onClick={closeMenu} className="font-heading text-2xl text-warmCream/90 hover:text-luminousGold">
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.li>
+                <motion.li initial={{ opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: (navLinks.length + 1) * 0.08 }}>
+                  <Link href="/fca-insights" onClick={closeMenu} className="font-heading text-[1.8rem] text-warmCream transition-colors hover:text-luminousGold">
+                    FCA Insights
+                  </Link>
+                </motion.li>
               </ul>
 
               <BookDemoTrigger

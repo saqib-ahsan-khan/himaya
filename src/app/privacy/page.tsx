@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Privacy Policy | HIMAYA",
-  description: "How HIMAYA collects, uses, stores and protects personal data.",
-};
+  description: "HIMAYA privacy policy — how we collect, use and protect your data in accordance with UK GDPR.",
+  path: "/privacy",
+});
 
 const sections = [
   {

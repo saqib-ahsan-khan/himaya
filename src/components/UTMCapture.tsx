@@ -7,17 +7,36 @@ function UTMCaptureInner() {
   const params = useSearchParams();
 
   useEffect(() => {
-    const keys = ["utm_source", "utm_medium", "utm_campaign"] as const;
-    keys.forEach((key) => {
-      const v = params.get(key);
-      if (v) {
+    const utmParams = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"] as const;
+
+    utmParams.forEach((param) => {
+      const value = params.get(param);
+      if (value) {
         try {
-          sessionStorage.setItem(key, v);
+          sessionStorage.setItem(param, value);
         } catch {
           /* ignore */
         }
       }
     });
+
+    const gclid = params.get("gclid");
+    if (gclid) {
+      try {
+        sessionStorage.setItem("gclid", gclid);
+      } catch {
+        /* ignore */
+      }
+    }
+
+    const liFatId = params.get("li_fat_id");
+    if (liFatId) {
+      try {
+        sessionStorage.setItem("li_fat_id", liFatId);
+      } catch {
+        /* ignore */
+      }
+    }
   }, [params]);
 
   return null;

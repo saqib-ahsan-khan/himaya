@@ -15,10 +15,18 @@ export interface BookingLead {
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
-  source: "booking_form" | "lead_magnet";
+  utmContent?: string;
+  utmTerm?: string;
+  gclid?: string;
+  source: "booking_form" | "lead_magnet" | "chatbot";
   createdAt: string;
   updatedAt: string;
 }
+
+export type AdminLead = BookingLead & {
+  id: string;
+  recordType: "booking" | "lead_magnet";
+};
 
 export interface LeadMagnetSubmission {
   id?: string;

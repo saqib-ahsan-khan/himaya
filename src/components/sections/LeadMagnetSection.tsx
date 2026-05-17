@@ -9,6 +9,7 @@ import { Suspense, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useUTM } from "@/hooks/useUTM";
 import { useToast } from "@/hooks/useToast";
+import { analytics } from "@/lib/analytics";
 import { leadMagnetSchema, type LeadMagnetFormData } from "@/lib/schemas";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -66,6 +67,7 @@ function LeadMagnetForm() {
       }
       const url = (json.downloadUrl as string) || "/downloads/himaya-control-drift-checklist.pdf";
       window.open(url, "_blank", "noopener,noreferrer");
+      analytics.checklistDownloaded();
       setStatus("success");
       toastSuccess("Your download is starting...");
     } catch {
@@ -141,7 +143,7 @@ export function LeadMagnetSection() {
   const inView = useInView(ref, { once: true, amount: 0.15 });
 
   return (
-    <section ref={ref} className="bg-warmCream py-20">
+    <section id="control-drift-checklist" ref={ref} className="bg-warmCream py-20">
       <div className="mx-auto grid w-full max-w-[1200px] gap-12 px-8 lg:grid-cols-[55%_45%] lg:items-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease }}>
           <span className="inline-block rounded-full bg-metallicGold/15 px-3 py-1 font-mono text-[0.65rem] tracking-[0.12em] text-metallicGold">

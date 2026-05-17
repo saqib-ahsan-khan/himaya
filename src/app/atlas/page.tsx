@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { BookDemoTrigger } from "@/components/BookDemoTrigger";
 import { GoldCheck } from "@/components/ui/Icons";
 import ListItem from "@/components/ui/ListItem";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "ATLAS | Regulatory Assurance Dashboard by HIMAYA",
   description:
-    "A dashboard for control drift, evidence status, remediation owners, SLA deadlines and regulator-mapped posture.",
-};
+    "Real-time control drift detection, evidence status, remediation owners, SLA deadlines and regulator-mapped posture for regulated firms.",
+  path: "/atlas",
+});
 
 const capabilities = [
   {
