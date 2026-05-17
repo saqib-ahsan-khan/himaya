@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
+import { authConfig } from "@/lib/auth.config";
 
 /** Auth.js v5 prefers AUTH_SECRET; NEXTAUTH_SECRET is supported for compatibility. */
 const authSecret = process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET;
@@ -12,8 +12,8 @@ if (!authSecret && process.env.NODE_ENV !== "test") {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  ...authConfig,
   secret: authSecret,
-  trustHost: true,
   providers: [
     Credentials({
       name: "credentials",
@@ -34,6 +34,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!credentials?.email || !credentials?.password) return null;
         if (credentials.email !== adminEmail) return null;
 
+        const { default: bcrypt } = await import("bcryptjs");
         const valid = await bcrypt.compare(credentials.password as string, adminHash);
         if (!valid) return null;
 
@@ -46,21 +47,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
-  pages: {
-    signIn: "/admin/login",
-    error: "/admin/login",
-  },
-  session: { strategy: "jwt" },
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) token.role = "admin";
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        session.user.role = token.role as string;
-      }
-      return session;
-    },
-  },
 });
