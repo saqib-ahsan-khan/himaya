@@ -3,8 +3,6 @@ import { NextRequest } from "next/server";
 import { HIMAYA_SYSTEM_PROMPT } from "@/lib/himaya-knowledge";
 import type { ApiChatMessage } from "@/types/chat";
 
-export const runtime = "edge";
-
 const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
