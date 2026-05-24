@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { AlertTriangle, Lock, Shield } from "lucide-react";
 import { DotAmber, DotGreen, DotRed, WarnIcon } from "@/components/ui/Icons";
 
@@ -18,16 +19,18 @@ const miniStats = [
 ];
 
 export function AtlasPreviewCard() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div className="relative mx-auto w-full max-w-[360px]">
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1, y: [0, -4, 0] }}
-        transition={{
-          opacity: { delay: 0.8, duration: 1 },
-          scale: { delay: 0.8, duration: 1 },
-          y: { duration: 7, repeat: Infinity, ease: "easeInOut" },
-        }}
+        initial={mounted ? { opacity: 0, scale: 0.96 } : false}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="rounded-2xl border border-metallicGold/20 bg-white p-6 shadow-[0_20px_60px_rgba(7,24,39,0.12),0_4px_20px_rgba(212,160,23,0.08)]"
       >
         <div className="mb-5 flex items-center justify-between">
@@ -48,12 +51,7 @@ export function AtlasPreviewCard() {
             <span className="pb-1 text-sm text-mutedText">/100</span>
           </div>
           <div className="h-1.5 overflow-hidden rounded-full bg-metallicGold/10">
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "62%" }}
-              transition={{ delay: 1, duration: 1.2, ease: "easeOut" }}
-              className="h-full rounded-full bg-gradient-to-r from-metallicGold to-luminousGold"
-            />
+            <div className="h-full w-[62%] rounded-full bg-gradient-to-r from-metallicGold to-luminousGold" />
           </div>
           <span className="inline-flex items-center gap-1 rounded-md bg-warningAmber/12 px-2 py-1 text-xs font-medium text-warningAmber">
             <WarnIcon size={12} /> Watch
@@ -114,14 +112,12 @@ export function AtlasPreviewCard() {
           ),
         },
       ].map((badge, i) => (
-        <motion.div
+        <div
           key={i}
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut", delay: badge.delay }}
           className={`absolute z-10 flex items-center gap-1 rounded-lg border border-metallicGold/30 bg-white px-3 py-1.5 font-mono text-[0.65rem] shadow-[0_4px_16px_rgba(7,24,39,0.1)] ${badge.cls}`}
         >
           {badge.content}
-        </motion.div>
+        </div>
       ))}
     </div>
   );

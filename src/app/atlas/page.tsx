@@ -1,6 +1,7 @@
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { BookDemoTrigger } from "@/components/BookDemoTrigger";
+import { AtlasDashboardPreview } from "@/components/sections/AtlasDashboardPreview";
 import { GoldCheck } from "@/components/ui/Icons";
 import ListItem from "@/components/ui/ListItem";
 import { buildPageMetadata } from "@/lib/metadata";
@@ -59,7 +60,7 @@ export default function AtlasPage() {
       </section>
 
       <section className="bg-ivoryWhite py-24">
-        <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-2">
+        <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:items-start">
           <div>
             <SectionLabel text="WHAT ATLAS IS" />
             <p className="mt-5 text-[0.98rem] leading-[1.9] text-slateText">
@@ -79,17 +80,7 @@ export default function AtlasPage() {
               ))}
             </div>
           </div>
-          <div className="animate-[float_6s_ease-in-out_infinite] rounded-2xl border border-metallicGold/30 bg-white p-6 shadow-[0_24px_80px_rgba(7,24,39,0.16)]">
-            <p className="font-mono text-xs tracking-[0.15em] text-metallicGold">ATLAS PREVIEW</p>
-            <h3 className="mt-2 font-heading text-2xl text-deepNavy">Regulatory Assurance Dashboard</h3>
-            <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
-              {["Posture 82", "Drift Alerts 4", "Evidence 91%", "SLA Breaches 1", "Unowned Controls 2", "Audit Pack Ready"].map((m) => (
-                <div key={m} className="rounded bg-warmCream px-3 py-2 text-slateText">
-                  {m}
-                </div>
-              ))}
-            </div>
-          </div>
+          <AtlasDashboardPreview />
         </div>
       </section>
 
