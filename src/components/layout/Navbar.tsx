@@ -113,7 +113,7 @@ export function Navbar() {
             <picture>
               <source srcSet="/assets/images/logos/himaya-logo.png" type="image/png" />
               <img
-                src="/assets/images/logos/himaya-logo.svg"
+                src="/assets/images/logos/himaya-logo.png"
                 alt="HIMAYA logo"
                 width={240}
                 height={64}

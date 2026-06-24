@@ -39,7 +39,7 @@ export function Footer() {
               <picture>
                 <source srcSet="/assets/images/logos/himaya-logo.png" type="image/png" />
                 <img
-                  src="/assets/images/logos/himaya-logo.svg"
+                  src="/assets/images/logos/himaya-logo.png"
                   alt="HIMAYA logo"
                   width={240}
                   height={64}
@@ -104,6 +104,17 @@ export function Footer() {
             ))}
           </div>
         </div>
+        <p className="mt-3 text-center font-mono text-[0.62rem] text-ivoryWhite/40">
+          Developed by{" "}
+          <a
+            href="https://zogofy.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-luminousGold"
+          >
+            Zogofy
+          </a>
+        </p>
       </div>
     </footer>
   );

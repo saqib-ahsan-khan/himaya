@@ -56,7 +56,7 @@ function AdminLoginForm() {
     <div className="flex min-h-screen items-center justify-center bg-warmCream px-4">
       <div className="w-full max-w-[400px] rounded-2xl border border-deepNavy/[0.08] bg-white p-10 shadow-[0_8px_40px_rgba(7,24,39,0.08)]">
         <div className="text-center">
-          <img src="/assets/images/logos/himaya-logo.svg" alt="HIMAYA" className="mx-auto h-10 w-auto" />
+          <img src="/assets/images/logos/himaya-logo.png" alt="HIMAYA" className="mx-auto h-10 w-auto" />
           <div className="mx-auto mt-4 h-px w-12 bg-metallicGold" />
           <h1 className="mt-5 font-heading text-[1.4rem] font-bold text-deepNavy">Admin Login</h1>
           <p className="mt-2 text-[0.82rem] text-mutedText">HIMAYA internal access only.</p>

@@ -216,6 +216,18 @@ export default function AboutPage() {
           </BookDemoTrigger>
         </div>
       </section>
+
+      <p className="border-t border-deepNavy/8 bg-ivoryWhite py-5 text-center font-mono text-[0.68rem] text-mutedText">
+        Developed by{" "}
+        <a
+          href="https://zogofy.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-deepNavy transition-colors hover:text-luminousGold"
+        >
+          Zogofy
+        </a>
+      </p>
     </>
   );
 }
