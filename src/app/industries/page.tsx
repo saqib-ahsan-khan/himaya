@@ -99,7 +99,7 @@ export default function IndustriesPage() {
           </div>
 
           <BookDemoTrigger className="mt-10 rounded-md bg-gradient-to-br from-metallicGold to-luminousGold px-8 py-3 font-bold text-deepNavy">
-            Book a Fit Call
+            Book a 15-Minute Demo
           </BookDemoTrigger>
         </div>
       </section>

@@ -40,7 +40,7 @@ export function ControlDriftSection() {
   const inView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={ref} className="bg-ivoryWhite py-[100px]">
+    <section ref={ref} className="bg-ivoryWhite py-[100px] max-md:py-[60px]">
       <div className="mx-auto grid w-full max-w-[1200px] gap-10 px-8 lg:grid-cols-[45%_55%]">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease }}>
           <p className="mb-5 font-mono text-[0.68rem] tracking-[0.2em] text-metallicGold">WHAT IS CONTROL DRIFT?</p>

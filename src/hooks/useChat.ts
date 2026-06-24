@@ -58,7 +58,11 @@ export function useChat() {
           throw new Error((err as { error?: string }).error ?? "Rate limit exceeded");
         }
 
-        if (!res.ok) throw new Error("API error");
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          const apiError = (err as { error?: string }).error;
+          throw new Error(apiError ?? "API error");
+        }
 
         const reader = res.body?.getReader();
         const decoder = new TextDecoder();
@@ -78,7 +82,10 @@ export function useChat() {
             const data = line.slice(6).trim();
             if (data === "[DONE]") break;
             try {
-              const parsed = JSON.parse(data) as { text?: string };
+              const parsed = JSON.parse(data) as { text?: string; error?: string };
+              if (parsed.error) {
+                throw new Error(parsed.error);
+              }
               if (parsed.text) {
                 fullText += parsed.text;
                 setMessages((prev) =>
@@ -102,7 +109,11 @@ export function useChat() {
         const fallback =
           error instanceof Error && error.message.includes("limit")
             ? error.message
-            : "I'm having trouble connecting right now. Please email hello@himaya.uk or use the Book a Demo button above.";
+            : error instanceof Error && error.message.includes("credit balance")
+              ? "The chat assistant is temporarily unavailable — API credits need to be topped up. Please email hello@himaya.uk or use Book a Demo."
+              : error instanceof Error && error.message.length > 10 && !error.message.includes("API error")
+                ? error.message
+                : "I'm having trouble connecting right now. Please email hello@himaya.uk or use the Book a Demo button above.";
 
         setMessages((prev) =>
           prev.map((m) =>

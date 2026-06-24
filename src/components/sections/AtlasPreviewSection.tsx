@@ -30,7 +30,7 @@ export function AtlasPreviewSection() {
   const inView = useInView(ref, { once: true, amount: 0.15 });
 
   return (
-    <section ref={ref} className="relative border-y border-metallicGold/25 bg-deepNavy py-[110px] text-ivoryWhite">
+    <section ref={ref} className="relative border-y border-metallicGold/25 bg-deepNavy py-[110px] max-md:py-[60px] text-ivoryWhite">
       <div className="mx-auto w-full max-w-[1200px] px-8">
         <motion.p
           initial={{ opacity: 0, y: 40 }}

@@ -33,8 +33,8 @@ export interface LeadMagnetSubmission {
   fullName: string;
   workEmail: string;
   companyName: string;
-  role: string;
-  consentStatus: boolean;
+  role?: string;
+  consentStatus?: boolean;
   consentTimestamp: string;
   downloadedChecklist: boolean;
   utmSource?: string;

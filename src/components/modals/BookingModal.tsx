@@ -182,7 +182,7 @@ function BookingModalInner() {
                 <p id="booking-modal-title" className="font-heading text-[1.1rem] font-bold text-metallicGold">
                   HIMAYA
                 </p>
-                <p className="mt-1 font-subheading text-[0.85rem] text-white/70">Book Your 15-Minute Discovery Call</p>
+                <p className="mt-1 font-subheading text-[0.85rem] text-white/70">Book Your 15-Minute Demo</p>
               </div>
               <button
                 type="button"
@@ -331,7 +331,7 @@ function BookingModalInner() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex w-full items-center justify-center gap-2 rounded-md bg-gradient-to-br from-metallicGold to-luminousGold py-3.5 text-base font-bold text-deepNavy transition hover:-translate-y-px hover:shadow-[0_10px_40px_rgba(212,160,23,0.35)] disabled:opacity-70"
+                    className="safe-bottom flex w-full items-center justify-center gap-2 rounded-md bg-gradient-to-br from-metallicGold to-luminousGold py-3.5 text-base font-bold text-deepNavy transition hover:-translate-y-px hover:shadow-[0_10px_40px_rgba(212,160,23,0.35)] disabled:opacity-70"
                   >
                     {isSubmitting ? (
                       <>
@@ -340,7 +340,7 @@ function BookingModalInner() {
                       </>
                     ) : (
                       <span className="inline-flex items-center gap-1.5">
-                        Request My 15-Minute Discovery Call
+                        Request My 15-Minute Demo
                         <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
                       </span>
                     )}
@@ -368,9 +368,9 @@ function BookingModalInner() {
                     <Check className="h-10 w-10 text-deepNavy" strokeWidth={2.5} aria-hidden />
                   </motion.div>
                 </motion.div>
-                <h3 className="text-center font-heading text-[1.6rem] font-bold text-deepNavy">Request received.</h3>
+                <h3 className="text-center font-heading text-[1.6rem] font-bold text-deepNavy">Demo request received.</h3>
                 <p className="mt-3 text-center text-slateText leading-[1.85]">
-                  Thank you, {firstName}. We will be in touch within 24 hours to confirm your 15-minute discovery call slot.
+                  We will be in touch within 24 hours to confirm your demo slot.
                 </p>
                 <div className="mt-6 rounded-r-lg border-l-4 border-metallicGold bg-warmCream px-5 py-4 text-sm text-slateText">
                   <span className="inline-flex items-start gap-2">
@@ -394,7 +394,7 @@ function BookingModalInner() {
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="mt-8 w-full rounded-md border border-deepNavy/15 py-3 text-sm font-semibold text-deepNavy transition hover:bg-deepNavy/5"
+                  className="safe-bottom mt-8 w-full rounded-md border border-deepNavy/15 py-3 text-sm font-semibold text-deepNavy transition hover:bg-deepNavy/5"
                 >
                   Close
                 </button>

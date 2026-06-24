@@ -19,10 +19,8 @@ export const leadMagnetSchema = z.object({
   fullName: z.string().min(2, "Required"),
   workEmail: z.string().email("Valid work email required"),
   companyName: z.string().min(2, "Required"),
-  role: z.string().min(2, "Required"),
-  consent: z.boolean().refine((val) => val === true, {
-    message: "Required to download",
-  }),
+  role: z.string().optional(),
+  consent: z.boolean().optional(),
 });
 
 export type BookingFormData = z.infer<typeof bookingSchema>;

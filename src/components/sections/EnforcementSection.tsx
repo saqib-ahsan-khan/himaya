@@ -60,7 +60,7 @@ export function EnforcementSection() {
   const inView = useInView(ref, { once: true, amount: 0.12 });
 
   return (
-    <section ref={ref} className="bg-warmCream py-[100px]">
+    <section ref={ref} className="bg-warmCream py-[100px] max-md:py-[60px] max-md:pb-20">
       <div className="mx-auto w-full max-w-[1200px] px-8">
         <motion.p
           initial={{ opacity: 0, y: 40 }}
@@ -74,27 +74,25 @@ export function EnforcementSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease, delay: 0.08 }}
-          className="mt-4 font-heading text-4xl font-bold leading-tight text-deepNavy md:text-5xl"
+          className="mobile-section-headline mt-4 font-heading text-4xl font-bold leading-tight text-deepNavy md:text-5xl"
         >
-          Real FCA cases. Real consequences.
-          <br />
-          The same pattern every time.
+          FCA enforcement shows what weak control discipline can cost.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease, delay: 0.16 }}
-          className="mt-5 max-w-[680px] text-slateText"
+          className="mobile-long-text mt-5 max-w-[680px] text-slateText"
         >
-          FCA enforcement history shows a repeated pattern: firms are punished when controls are not tested, monitoring gaps go unnoticed, remediation is
-          delayed, outsourced providers are not properly overseen and evidence is not strong enough to prove effective governance.
+          FCA enforcement actions repeatedly show the same operational pattern: controls are not tested properly, monitoring gaps persist, remediation is
+          delayed, risk ownership is unclear, and firms struggle to evidence effective governance when challenged.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease, delay: 0.22 }}
-          className="my-10 grid gap-4 rounded-[10px] border border-metallicGold/15 bg-metallicGold/7 px-8 py-6 md:grid-cols-3"
+          className="my-10 grid gap-4 rounded-[10px] border border-metallicGold/15 bg-metallicGold/7 px-8 py-6 max-md:grid-cols-1 md:grid-cols-3"
         >
           {[
             { v: "£6.47m", l: "ADM Investor Services fine" },
@@ -108,7 +106,7 @@ export function EnforcementSection() {
           ))}
         </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 max-md:grid-cols-1">
           {cases.map((c, idx) => (
             <motion.article
               key={c.firm}
@@ -118,8 +116,11 @@ export function EnforcementSection() {
               className={`rounded-r-xl border border-deepNavy/6 bg-white py-7 pl-8 pr-8 shadow-[0_2px_16px_rgba(7,24,39,0.06)] transition-all duration-300 hover:translate-x-1 hover:border-l-luminousGold hover:shadow-[0_8px_32px_rgba(7,24,39,0.1)] border-l-4 ${c.borderClass}`}
             >
               <div className="flex flex-wrap items-start justify-between gap-3">
-                <h3 className="text-base font-bold text-deepNavy">{c.firm}</h3>
-                <span className="rounded-md bg-deepNavy px-3 py-1 font-heading text-[0.9rem] text-white">{c.fine}</span>
+                <div className="flex flex-wrap items-center gap-3">
+                  <h3 className="text-base font-bold text-deepNavy">{c.firm}</h3>
+                  <span className="rounded-md bg-deepNavy px-3 py-1 font-heading text-[0.9rem] text-white md:hidden">{c.fine}</span>
+                </div>
+                <span className="hidden shrink-0 rounded-md bg-deepNavy px-3 py-1 font-heading text-[0.9rem] text-white md:inline-block">{c.fine}</span>
               </div>
               <p className="mb-1 mt-3 font-mono text-[0.62rem] uppercase tracking-[0.12em] text-mutedText">FAILURE PATTERN</p>
               <p className="text-[0.88rem] leading-[1.75] text-slateText">{c.pattern}</p>
@@ -140,9 +141,14 @@ export function EnforcementSection() {
           ))}
         </div>
 
-        <p className="mt-8 text-[0.78rem] italic text-mutedText">
-          These cases are public FCA enforcement examples and are not HIMAYA client cases. Source links open official FCA press releases.
-        </p>
+        <div
+          className="mt-8 rounded-r-[6px] border border-[rgba(7,24,39,0.1)] border-l-[3px] border-l-[rgba(212,160,23,0.5)] px-[1.2rem] py-[0.8rem] font-subheading text-[0.8rem] italic text-mutedText"
+          style={{ background: "rgba(7,24,39,0.03)" }}
+        >
+          These examples are public FCA enforcement cases. They are not HIMAYA clients, and HIMAYA does not claim it would have prevented these outcomes.
+          They are shown to highlight recurring governance, monitoring, evidence, and control issues.
+        </div>
+
         <Link href="/enforcement-lessons" className="mt-4 inline-flex items-center gap-1 text-base font-semibold text-metallicGold hover:underline">
           See all enforcement lessons
           <GoldArrow size={16} />

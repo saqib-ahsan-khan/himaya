@@ -8,7 +8,7 @@ const footerSections = [
   },
   {
     title: "SERVICES",
-    links: ["Human Firewall", "Manual GRC", "Access Governance", "Remediation Oversight", "Monthly Reporting"],
+    links: ["Human Risk & Awareness Programme", "Manual GRC", "Access Governance", "Remediation Oversight", "Monthly Reporting"],
   },
   {
     title: "SECTORS",

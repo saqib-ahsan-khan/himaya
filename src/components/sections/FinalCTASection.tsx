@@ -23,8 +23,8 @@ function ShieldBg() {
 }
 
 const trust = [
-  { icon: <Lock size={18} className="shrink-0 text-metallicGold/90" aria-hidden />, text: "No long-term contracts" },
-  { icon: <ClipboardList size={18} className="shrink-0 text-metallicGold/90" aria-hidden />, text: "Response within 24 hours" },
+  { icon: <Lock size={18} className="shrink-0 text-metallicGold/90" aria-hidden />, text: "Flexible monthly packages" },
+  { icon: <ClipboardList size={18} className="shrink-0 text-metallicGold/90" aria-hidden />, text: "Demo response within 24 hours" },
   { icon: <GoldCheck size={18} />, text: "FCA-regulated firm focus" },
   { icon: <Shield size={18} className="shrink-0 text-metallicGold/90" aria-hidden />, text: "No sensitive data via public forms" },
 ];
@@ -36,7 +36,7 @@ export function FinalCTASection() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-[linear-gradient(135deg,#071827_0%,#0D1321_100%)] py-[120px] text-center text-ivoryWhite"
+      className="relative overflow-hidden bg-[linear-gradient(135deg,#071827_0%,#0D1321_100%)] py-[120px] max-md:py-[60px] max-md:pb-20 text-center text-ivoryWhite"
     >
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.04]">
         <div className="h-[400px] w-[400px] [&>svg]:h-full [&>svg]:w-full">
@@ -77,16 +77,16 @@ export function FinalCTASection() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease, delay: 0.36 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="safe-bottom mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <BookDemoTrigger className="rounded-md bg-gradient-to-br from-metallicGold to-luminousGold px-9 py-4 text-base font-bold text-deepNavy transition hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(212,160,23,0.4)]">
             Book a 15-Minute Demo
           </BookDemoTrigger>
           <Link
-            href="/about"
+            href="/atlas"
             className="rounded-md border-[1.5px] border-metallicGold/35 px-9 py-4 text-base font-semibold text-[rgba(255,253,247,0.85)] transition hover:border-metallicGold hover:bg-metallicGold/6 hover:text-white"
           >
-            Explore HIMAYA
+            See ATLAS Platform
           </Link>
         </motion.div>
         <motion.div

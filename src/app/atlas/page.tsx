@@ -42,7 +42,7 @@ const modules = [
   ["Evidence Coverage", ["Missing evidence list", "Expiry warnings", "Linked document audit trail"]],
   ["Remediation Queue", ["Priority and SLA countdown", "Escalation path", "Closure evidence checks"]],
   ["Regulatory Mapping", ["FCA / ICO / ISO / CE mapping", "Gap heatmap", "Control-to-obligation traceability"]],
-  ["Executive Reporting", ["Monthly drift certificate", "Quarterly board pack", "Trend and narrative summary"]],
+  ["Executive Reporting", ["Monthly Control Drift Report", "Quarterly board pack", "Trend and narrative summary"]],
 ] as const;
 
 export default function AtlasPage() {

@@ -57,7 +57,7 @@ const onboardingSteps = [
   {
     title: "Monthly Assurance",
     detail: "Monthly review of drift, evidence, remediation and risk posture.",
-    output: "Monthly drift certificate",
+    output: "Monthly Control Drift Report",
   },
   {
     title: "Quarterly Oversight",

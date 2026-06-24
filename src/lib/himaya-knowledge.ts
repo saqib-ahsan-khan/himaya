@@ -128,12 +128,12 @@ HIMAYA'S SIX SERVICES
    - Executive summary report
    - Board-ready quarterly pack
 
-3. Human Firewall Programme
+3. Human Risk & Awareness Programme
    Behavioural risk measurement and structured 
    training accountability.
    Includes:
    - Phishing simulations
-   - Repeat offender identification
+   - Repeat-risk user identification
    - Mandatory training enforcement
    - Management escalation
    - GDPR and FCA awareness mapping
@@ -161,7 +161,7 @@ HIMAYA'S SIX SERVICES
 6. Board Reporting
    Monthly and quarterly reports for leadership.
    Features:
-   - Monthly drift certificate
+   - Monthly Control Drift Report
    - Quarterly assurance pack
    - Non-technical board language
    - Posture trend over time
@@ -186,7 +186,7 @@ Best for: FCA SMEs needing active assurance
 and remediation tracking.
 Includes:
 - Everything in Essential
-- ATLAS + Human Firewall
+- ATLAS + Human Risk & Awareness Programme
 - Remediation SLA tracker
 - Quarterly oversight call
 - Board-ready monthly reports

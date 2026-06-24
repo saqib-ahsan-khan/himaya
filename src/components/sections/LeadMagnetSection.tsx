@@ -79,7 +79,7 @@ function LeadMagnetForm() {
     "w-full rounded-md border border-deepNavy/12 bg-white px-3 py-2.5 text-sm text-slateText focus:border-metallicGold focus:outline-none focus:ring-2 focus:ring-metallicGold/15";
 
   return (
-    <form className="mt-8 space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className="safe-bottom mt-8 space-y-4 pb-[env(safe-area-inset-bottom)]" onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label className="mb-1 block text-xs font-semibold text-deepNavy">Full Name *</label>
@@ -99,14 +99,14 @@ function LeadMagnetForm() {
           {errors.companyName && <p className="mt-1 text-xs text-dangerRed">{errors.companyName.message}</p>}
         </div>
         <div>
-          <label className="mb-1 block text-xs font-semibold text-deepNavy">Role *</label>
+          <label className="mb-1 block text-xs font-semibold text-deepNavy">Role (optional)</label>
           <input type="text" className={input} {...register("role")} />
           {errors.role && <p className="mt-1 text-xs text-dangerRed">{errors.role.message}</p>}
         </div>
       </div>
       <label className="flex cursor-pointer items-start gap-2 text-sm text-slateText">
         <input type="checkbox" className="mt-1 h-4 w-4 rounded border-deepNavy/20 text-metallicGold" {...register("consent")} />
-        <span>I agree to the processing of my data to receive the checklist.</span>
+        <span>I agree to receive follow-up communications about HIMAYA services (optional).</span>
       </label>
       {errors.consent && <p className="text-xs text-dangerRed">{errors.consent.message}</p>}
       {status === "error" && <p className="text-sm text-dangerRed">Something went wrong. Please try again.</p>}
@@ -143,7 +143,7 @@ export function LeadMagnetSection() {
   const inView = useInView(ref, { once: true, amount: 0.15 });
 
   return (
-    <section id="control-drift-checklist" ref={ref} className="bg-warmCream py-20">
+    <section id="control-drift-checklist" ref={ref} className="bg-warmCream py-20 max-md:py-[60px] max-md:pb-20">
       <div className="mx-auto grid w-full max-w-[1200px] gap-12 px-8 lg:grid-cols-[55%_45%] lg:items-center">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, ease }}>
           <span className="inline-block rounded-full bg-metallicGold/15 px-3 py-1 font-mono text-[0.65rem] tracking-[0.12em] text-metallicGold">
@@ -155,7 +155,7 @@ export function LeadMagnetSection() {
             Control Drift Checklist
           </h2>
           <p className="mt-4 text-slateText">
-            Assess your own evidence, access reviews, MFA exceptions, backup testing, owner mapping and remediation deadlines. Free download, no spam.
+            Assess your own evidence, access reviews, MFA exceptions, backup testing, owner mapping and remediation deadlines. Free practical checklist. No obligation.
           </p>
           <ul className="mt-6 space-y-2 text-sm text-slateText">
             {[

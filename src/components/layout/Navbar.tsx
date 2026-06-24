@@ -9,19 +9,28 @@ import { BookDemoTrigger } from "@/components/BookDemoTrigger";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "About HIMAYA", href: "/about" },
+  { label: "ATLAS Platform", href: "/atlas" },
   { label: "Services", href: "/services" },
-  { label: "ATLAS", href: "/atlas" },
   { label: "Industries", href: "/industries" },
+  { label: "Pricing", href: "/#packages" },
 ];
 
 const resourceLinks = [
   { label: "FCA Regulatory Insights", href: "/fca-insights" },
-  { label: "Control Drift Checklist", href: "/#control-drift-checklist" },
+  { label: "Enforcement Lessons", href: "/enforcement-lessons" },
+  { label: "Control Drift Checklist", href: "/resources/checklist" },
+  { label: "Resources Hub", href: "/resources" },
 ];
 
+function isLinkActive(href: string, pathname: string): boolean {
+  if (href === "/") return pathname === "/";
+  if (href.startsWith("/#")) return false;
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 function NavLink({ href, label, pathname }: { href: string; label: string; pathname: string }) {
-  const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
+  const isActive = isLinkActive(href, pathname);
   return (
     <li>
       <Link
@@ -42,6 +51,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const resourcesRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -69,8 +79,16 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
-  const closeMenu = () => setIsMenuOpen(false);
-  const resourcesActive = pathname === "/resources" || pathname.startsWith("/fca-insights");
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setMobileResourcesOpen(false);
+  };
+
+  const resourcesActive =
+    pathname === "/resources" ||
+    pathname.startsWith("/fca-insights") ||
+    pathname.startsWith("/enforcement-lessons") ||
+    pathname.startsWith("/resources/checklist");
 
   return (
     <>
@@ -86,7 +104,11 @@ export function Navbar() {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="fixed top-0 z-50 w-full border-b backdrop-blur-md"
       >
-        <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-6">
+        <nav
+          className={`mx-auto flex w-full max-w-7xl items-center justify-between px-6 transition-all duration-300 ${
+            isScrolled ? "max-md:min-h-[52px]" : ""
+          }`}
+        >
           <Link href="/" className="flex items-center">
             <picture>
               <source srcSet="/assets/images/logos/himaya-logo.png" type="image/png" />
@@ -95,7 +117,9 @@ export function Navbar() {
                 alt="HIMAYA logo"
                 width={240}
                 height={64}
-                className="h-14 w-auto max-w-[240px] object-contain"
+                className={`h-14 w-auto max-w-[240px] object-contain transition-transform duration-300 ${
+                  isScrolled ? "max-md:h-[3rem] max-md:scale-[0.85]" : ""
+                }`}
               />
             </picture>
           </Link>
@@ -117,34 +141,27 @@ export function Navbar() {
                 <ChevronDown size={14} className={`transition ${resourcesOpen ? "rotate-180" : ""}`} aria-hidden />
               </button>
               {resourcesOpen && (
-                <div className="absolute left-0 top-full z-50 mt-2 min-w-[220px] rounded-lg border border-deepNavy/10 bg-white py-2 shadow-lg">
+                <div className="absolute left-0 top-full z-50 mt-2 min-w-[240px] rounded-lg border border-deepNavy/10 bg-white py-2 shadow-lg">
                   {resourceLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setResourcesOpen(false)}
-                      className="block px-4 py-2 text-sm text-slateText transition hover:bg-metallicGold/5 hover:text-metallicGold"
+                      className={`block px-4 py-2 text-sm transition hover:bg-metallicGold/5 hover:text-metallicGold ${
+                        isLinkActive(link.href, pathname) ? "font-semibold text-deepNavy" : "text-slateText"
+                      }`}
                     >
                       {link.label}
                     </Link>
                   ))}
-                  <Link
-                    href="/resources"
-                    onClick={() => setResourcesOpen(false)}
-                    className="block border-t border-deepNavy/5 px-4 py-2 text-sm text-mutedText transition hover:text-metallicGold"
-                  >
-                    All Resources
-                  </Link>
                 </div>
               )}
             </li>
-
-            <NavLink href="/fca-insights" label="FCA Insights" pathname={pathname} />
           </ul>
 
           <div className="hidden items-center gap-5 md:flex">
             <BookDemoTrigger className="rounded-md bg-gradient-to-br from-metallicGold to-luminousGold px-5 py-2.5 font-subheading text-sm font-bold text-deepNavy transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_24px_rgba(212,160,23,0.35)]">
-              Book a Demo
+              Book Demo
             </BookDemoTrigger>
           </div>
 
@@ -190,35 +207,59 @@ export function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.08 }}
                   >
-                    <Link href={item.href} onClick={closeMenu} className="font-heading text-[1.8rem] text-warmCream transition-colors hover:text-luminousGold">
+                    <Link
+                      href={item.href}
+                      onClick={closeMenu}
+                      className={`font-heading text-[1.8rem] transition-colors hover:text-luminousGold ${
+                        isLinkActive(item.href, pathname) ? "text-luminousGold" : "text-warmCream"
+                      }`}
+                    >
                       {item.label}
                     </Link>
                   </motion.li>
                 ))}
                 <motion.li initial={{ opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: navLinks.length * 0.08 }}>
-                  <p className="font-mono text-xs tracking-[0.2em] text-metallicGold">Resources</p>
-                  <ul className="mt-3 space-y-3 pl-2">
-                    {resourceLinks.map((link) => (
-                      <li key={link.href}>
-                        <Link href={link.href} onClick={closeMenu} className="font-heading text-2xl text-warmCream/90 hover:text-luminousGold">
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.li>
-                <motion.li initial={{ opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: (navLinks.length + 1) * 0.08 }}>
-                  <Link href="/fca-insights" onClick={closeMenu} className="font-heading text-[1.8rem] text-warmCream transition-colors hover:text-luminousGold">
-                    FCA Insights
-                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setMobileResourcesOpen((o) => !o)}
+                    className="flex w-full items-center gap-2 font-heading text-[1.8rem] text-warmCream transition-colors hover:text-luminousGold"
+                  >
+                    Resources
+                    <ChevronDown size={22} className={`transition ${mobileResourcesOpen ? "rotate-180" : ""}`} aria-hidden />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {mobileResourcesOpen && (
+                      <motion.ul
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="mt-3 space-y-3 overflow-hidden pl-2"
+                      >
+                        {resourceLinks.map((link) => (
+                          <li key={link.href}>
+                            <Link
+                              href={link.href}
+                              onClick={closeMenu}
+                              className={`font-heading text-2xl hover:text-luminousGold ${
+                                isLinkActive(link.href, pathname) ? "text-luminousGold" : "text-warmCream/90"
+                              }`}
+                            >
+                              {link.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
                 </motion.li>
               </ul>
 
               <BookDemoTrigger
                 onClick={closeMenu}
-                className="w-full rounded-md bg-gradient-to-br from-metallicGold to-luminousGold px-5 py-3 text-center font-subheading font-bold text-deepNavy"
+                className="safe-bottom w-full rounded-md bg-gradient-to-br from-metallicGold to-luminousGold px-5 py-3 text-center font-subheading font-bold text-deepNavy"
               >
-                Book a Demo
+                Book Demo
               </BookDemoTrigger>
             </motion.div>
           </motion.div>

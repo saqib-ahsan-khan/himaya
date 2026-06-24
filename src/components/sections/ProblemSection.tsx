@@ -50,7 +50,7 @@ export function ProblemSection() {
   const inView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={ref} className="bg-warmCream py-[100px]">
+    <section ref={ref} className="bg-warmCream py-[100px] max-md:py-[60px]">
       <div className="mx-auto w-full max-w-[1200px] px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -62,7 +62,7 @@ export function ProblemSection() {
           THE PROBLEM
         </motion.div>
 
-        <h2 className="font-heading text-[clamp(2rem,4.5vw,3.4rem)] font-bold text-deepNavy">
+        <h2 className="mobile-section-headline font-heading text-[clamp(2rem,4.5vw,3.4rem)] font-bold text-deepNavy">
           {["Most regulated firms", "do not fail", "because they lack tools."].map((part, i) => (
             <div key={part} className="overflow-hidden">
               <motion.span
@@ -81,7 +81,7 @@ export function ProblemSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease, delay: 0.25 }}
-          className="mt-5 max-w-[580px] text-[1.05rem] leading-relaxed text-slateText"
+          className="mt-5 max-w-[580px] text-[1.05rem] leading-relaxed text-slateText mobile-long-text"
         >
           They fail because control discipline breaks down between reviews - and{" "}
           <em className="text-metallicGold">no one is watching</em>.
@@ -104,7 +104,7 @@ export function ProblemSection() {
               initial={card.initial}
               animate={inView ? { x: 0, y: 0, opacity: 1 } : {}}
               transition={{ duration: 0.7, ease, delay: 0.45 + idx * 0.1 }}
-              className="group relative rounded-xl border border-deepNavy/8 bg-white p-8 shadow-[0_4px_24px_rgba(7,24,39,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(7,24,39,0.1)]"
+              className="group relative rounded-xl border border-deepNavy/8 bg-white p-8 shadow-[0_4px_24px_rgba(7,24,39,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(7,24,39,0.1)] max-md:mobile-problem-card"
               style={{ borderTop: `3px solid ${card.border}` }}
             >
               <span className="pointer-events-none absolute right-5 top-2 font-heading text-[4rem] leading-none text-deepNavy/6">

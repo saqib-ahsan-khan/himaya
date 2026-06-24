@@ -32,6 +32,14 @@ const faqs = [
     a: "Only lead and booking information: name, work email, company, role and compliance concern. Sensitive compliance evidence should never be submitted through public forms.",
   },
   {
+    q: "Does HIMAYA guarantee regulatory compliance?",
+    a: "No. HIMAYA provides cybersecurity, governance, risk, compliance, and operational assurance support. We help firms improve visibility, evidence, ownership, and remediation discipline, but we do not provide legal advice, regulatory representation, or guarantee regulatory outcomes.",
+  },
+  {
+    q: "Do you need access to our systems?",
+    a: "It depends on the package and agreed scope. Some services can begin with manual evidence and structured reviews. Platform integrations are introduced only where they add assurance value and are agreed with the client.",
+  },
+  {
     q: "Which firms do you help first?",
     a: "Initial focus is FCA-regulated SMEs with 10-100 employees, small compliance teams, MSP support and manual internal governance. We also support SRA-regulated law firms, accounting firms and UK GDPR-sensitive SMEs.",
   },
@@ -43,7 +51,7 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section ref={ref} className="bg-ivoryWhite py-[100px]">
+    <section ref={ref} className="bg-ivoryWhite py-[100px] max-md:py-[60px]">
       <div className="mx-auto w-full max-w-[1200px] px-8">
         <motion.p
           initial={{ opacity: 0, y: 40 }}

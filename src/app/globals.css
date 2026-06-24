@@ -99,3 +99,49 @@ body {
   font-weight: 600;
   color: #071827;
 }
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 767px) {
+  .mobile-long-text {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .mobile-section-headline {
+    font-size: clamp(1.6rem, 5vw, 2.4rem) !important;
+  }
+
+  .mobile-service-desc {
+    font-size: 0.85rem;
+  }
+
+  .mobile-problem-card {
+    padding: 1.2rem;
+  }
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 767px) {
+  .mobile-long-text {
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .mobile-section-headline {
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+  }
+
+  .mobile-problem-card {
+    padding: 1.2rem;
+  }
+
+  .mobile-service-desc {
+    font-size: 0.85rem;
+  }
+}

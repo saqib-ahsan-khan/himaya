@@ -5,14 +5,30 @@ import { AnimatePresence, motion, type Transition } from "framer-motion";
 import { Activity, FileCheck, Shield, type LucideIcon } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
 import { useBooking } from "@/context/BookingContext";
-import HeroCanvas from "@/components/ui/HeroCanvas";
 import { DotAmber, DotRed, GreenCheck, MidDot, WarnIcon } from "@/components/ui/Icons";
 
 const headlineLines = [
-  { text: "Continuous Regulatory", accent: false },
-  { text: "Assurance", accent: true },
+  { text: "Continuous Regulatory Assurance", accent: false },
   { text: "for Regulated SMEs", accent: false },
 ];
+
+const heroSubtext =
+  "HIMAYA helps regulated firms monitor control drift, evidence gaps, remediation ownership, and regulatory posture before audits, incidents, or board-level scrutiny expose the weakness.";
+
+const heroParticles = [
+  { top: "12%", right: "8%", size: 3 },
+  { top: "22%", right: "18%", size: 2 },
+  { top: "18%", right: "32%", size: 4 },
+  { top: "35%", right: "6%", size: 2 },
+  { top: "42%", right: "24%", size: 3 },
+  { top: "55%", right: "14%", size: 4 },
+  { top: "48%", right: "38%", size: 2 },
+  { top: "68%", right: "10%", size: 3 },
+  { top: "72%", right: "28%", size: 2 },
+  { top: "28%", right: "45%", size: 3 },
+  { top: "62%", right: "42%", size: 2 },
+  { top: "80%", right: "20%", size: 4 },
+] as const;
 
 type HoveredCard = null | 0 | 1 | 2;
 
@@ -137,9 +153,7 @@ function StackedHeroCard({
             <span className={`shrink-0 rounded-[50px] px-[0.5rem] py-[0.15rem] ${statusClass}`}>{statusText}</span>
           </div>
 
-          <div
-            className={`flex shrink-0 items-end ${isHovered ? "mt-[0.6rem] mb-[0.4rem]" : "mt-2"}`}
-          >
+          <div className={`flex shrink-0 items-end ${isHovered ? "mt-[0.6rem] mb-[0.4rem]" : "mt-2"}`}>
             <span className="font-heading text-[1.6rem] font-bold leading-none text-white" style={{ fontWeight: 700 }}>
               {metric}
             </span>
@@ -192,10 +206,7 @@ function HeroFloatingCards() {
 
   return (
     <div className="absolute bottom-10 right-10 z-20 hidden min-[1100px]:block w-[340px] pb-5">
-      <div
-        className="relative block h-[320px] w-[340px]"
-        onMouseLeave={() => setHoveredCard(null)}
-      >
+      <div className="relative block h-[320px] w-[340px]" onMouseLeave={() => setHoveredCard(null)}>
         <StackedHeroCard
           index={0}
           hoveredCard={hoveredCard}
@@ -323,37 +334,45 @@ export function Hero() {
   const { openModal } = useBooking();
 
   return (
-    <section className="relative -mt-24 flex h-svh min-h-[480px] flex-col overflow-hidden bg-transparent">
-      <HeroCanvas />
+    <section className="relative -mt-24 flex min-h-svh flex-col overflow-x-hidden bg-[#FFFDF7]">
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(212,160,23,0.12) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+        aria-hidden
+      />
+
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
+        {heroParticles.map((p, i) => (
+          <span
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              top: p.top,
+              right: p.right,
+              width: p.size,
+              height: p.size,
+              background: "rgba(212,160,23,0.18)",
+            }}
+          />
+        ))}
+      </div>
+
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 z-0 h-[400px] w-[400px]"
+        style={{
+          background: "radial-gradient(circle, rgba(212,160,23,0.06) 0%, transparent 70%)",
+        }}
+        aria-hidden
+      />
 
       <HeroFloatingCards />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-20 pt-[100px]">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pb-24 pt-[100px] max-md:pb-32">
         <div className="flex w-full max-w-[820px] flex-col items-start text-left">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.8 }}
-            className="inline-flex items-center gap-[0.5rem] rounded-[50px] border border-[rgba(212,160,23,0.22)] bg-[rgba(212,160,23,0.07)] px-[1.1rem] py-[0.38rem]"
-          >
-            <motion.span
-              className="h-[7px] w-[7px] shrink-0 rounded-full bg-metallicGold"
-              animate={{ opacity: [1, 0.2, 1] }}
-              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-              aria-hidden
-            />
-            <span className="inline-flex flex-wrap items-center gap-x-1 font-mono text-[0.62rem] leading-snug tracking-[0.2em] text-deepNavy">
-              FCA
-              <MidDot className="bg-deepNavy/40" />
-              ICO
-              <MidDot className="bg-deepNavy/40" />
-              UK GDPR
-              <MidDot className="bg-deepNavy/40" />
-              <span className="sm:whitespace-nowrap">Operational Resilience</span>
-            </span>
-          </motion.div>
-
-          <h1 className="mt-[1rem] max-w-[820px] text-left font-heading text-[clamp(2rem,5.5vw,4.75rem)] font-bold leading-[1.28] text-deepNavy sm:mt-[1.25rem]">
+          <h1 className="mobile-section-headline max-w-[820px] text-left font-heading text-[clamp(2rem,5.5vw,4.75rem)] font-bold leading-[1.28] text-deepNavy">
             {headlineLines.map((line, index) => (
               <div key={line.text} className="overflow-hidden">
                 <motion.span
@@ -365,19 +384,21 @@ export function Hero() {
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className={`block ${line.accent ? "text-metallicGold" : "text-deepNavy"}`}
-                  style={
-                    line.accent
-                      ? {
-                          textShadow: "0 0 40px rgba(212,160,23,0.25)",
-                        }
-                      : undefined
-                  }
                 >
                   {line.text}
                 </motion.span>
               </div>
             ))}
           </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="mobile-long-text mt-[1.25rem] max-w-[680px] text-[1rem] leading-[1.85] text-slateText sm:mt-[1.4rem]"
+          >
+            {heroSubtext}
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -400,10 +421,10 @@ export function Hero() {
             </motion.button>
 
             <Link
-              href="/about"
+              href="/atlas"
               className="inline-flex items-center justify-center rounded-[6px] border-[1.5px] border-[rgba(7,24,39,0.18)] bg-transparent px-[2.2rem] py-[0.9rem] font-subheading text-[0.95rem] font-bold tracking-[0.02em] text-deepNavy transition-all duration-300 hover:border-metallicGold hover:bg-[rgba(212,160,23,0.04)] hover:text-metallicGold"
             >
-              Explore HIMAYA
+              See ATLAS Platform
             </Link>
           </motion.div>
         </div>

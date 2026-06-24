@@ -34,10 +34,10 @@ const services = [
     iconBg: "bg-deepNavy/6",
   },
   {
-    name: "Human Firewall Programme",
+    name: "Human Risk & Awareness Programme",
     tag: "Behavioural Risk",
     description: "Awareness tracking, phishing simulations, repeat-risk identification and escalation.",
-    deliver: ["Phishing simulations", "Repeat offender tracking", "GDPR & FCA awareness mapping", "90-day KPI measurement"],
+    deliver: ["Phishing simulations", "Repeat-risk behaviour tracking", "GDPR & FCA awareness mapping", "90-day KPI measurement"],
     Icon: FirewallIcon,
     iconBg: "bg-dangerRed/6",
   },
@@ -61,7 +61,7 @@ const services = [
     name: "Board Reporting",
     tag: "Board Visibility",
     description: "Monthly and quarterly reports summarising posture, drift, remediation and evidence gaps.",
-    deliver: ["Monthly drift certificate", "Quarterly assurance pack", "Non-technical format", "Board-ready language"],
+    deliver: ["Monthly Control Drift Report", "Quarterly assurance pack", "Non-technical format", "Board-ready language"],
     Icon: ReportingIcon,
     iconBg: "bg-metallicGold/10",
   },
@@ -72,7 +72,7 @@ export function ServicesSection() {
   const inView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={ref} className="bg-warmCream py-[100px]">
+    <section ref={ref} className="bg-warmCream py-[100px] max-md:py-[60px]">
       <div className="mx-auto w-full max-w-[1200px] px-8">
         <motion.p
           initial={{ opacity: 0, y: 40 }}
@@ -86,7 +86,7 @@ export function ServicesSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease, delay: 0.08 }}
-          className="mt-4 font-heading text-4xl font-bold text-deepNavy md:text-6xl"
+          className="mt-4 font-heading text-4xl font-bold text-deepNavy md:text-6xl mobile-section-headline"
         >
           Six services. One structured
           <br />
@@ -96,12 +96,13 @@ export function ServicesSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease, delay: 0.16 }}
-          className="mt-5 max-w-3xl text-slateText"
+          className="mt-5 max-w-3xl text-slateText mobile-long-text"
         >
-          Avoid vague cyber language. Every service has a clear compliance value and defined output.
+          Every HIMAYA service is designed to produce a clear assurance output: visibility, evidence, ownership, remediation tracking, or board-ready
+          reporting.
         </motion.p>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid gap-6 max-md:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service, idx) => (
             <motion.div
               key={service.name}
@@ -117,7 +118,7 @@ export function ServicesSection() {
                 {service.tag}
               </span>
               <h3 className="mt-2 text-[1.05rem] font-bold text-deepNavy">{service.name}</h3>
-              <p className="mt-3 text-[0.88rem] leading-[1.8] text-slateText">{service.description}</p>
+              <p className="mt-3 text-[0.88rem] leading-[1.8] text-slateText mobile-service-desc">{service.description}</p>
               <div className="my-4 h-px bg-metallicGold/15" />
               <div className="space-y-1.5 font-mono text-[0.78rem] text-slateText">
                 {service.deliver.map((item) => (

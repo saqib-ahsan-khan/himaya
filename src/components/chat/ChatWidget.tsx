@@ -172,7 +172,7 @@ export function ChatWidget() {
             initial={{ opacity: 0, x: 8 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0 }}
-            className="fixed bottom-[2.3rem] right-[5.5rem] z-[9000] rounded-lg bg-deepNavy px-3.5 py-2 text-[0.78rem] text-white shadow-lg after:absolute after:-right-1.5 after:top-1/2 after:h-0 after:w-0 after:-translate-y-1/2 after:border-y-[6px] after:border-l-[6px] after:border-y-transparent after:border-l-deepNavy"
+            className="fixed bottom-[5.5rem] right-20 z-[9000] rounded-lg bg-deepNavy px-3.5 py-2 text-[0.78rem] text-white shadow-lg after:absolute after:-right-1.5 after:top-1/2 after:h-0 after:w-0 after:-translate-y-1/2 after:border-y-[6px] after:border-l-[6px] after:border-y-transparent after:border-l-deepNavy max-md:hidden"
           >
             Ask HIMAYA
           </motion.div>
@@ -182,7 +182,7 @@ export function ChatWidget() {
       <button
         type="button"
         onClick={() => setIsOpen((o) => !o)}
-        className="fixed bottom-[1.8rem] right-[1.8rem] z-[9000] flex h-[58px] w-[58px] items-center justify-center rounded-full transition-all duration-300 hover:scale-[1.08]"
+            className="fixed bottom-[5rem] right-4 z-[9000] flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 hover:scale-[1.08] md:bottom-[1.8rem] md:right-[1.8rem] md:h-[58px] md:w-[58px]"
         style={{
           background: "linear-gradient(135deg, #D4A017, #F8C955)",
           boxShadow: isOpen
@@ -210,7 +210,7 @@ export function ChatWidget() {
             exit={{ opacity: 0, scale: 0.85, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 28 }}
             style={{ transformOrigin: "bottom right" }}
-            className="fixed bottom-[5.5rem] right-[1.8rem] z-[8999] flex h-[560px] w-[380px] max-[480px]:bottom-20 max-[480px]:right-4 max-[480px]:h-[75vh] max-[480px]:w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border border-metallicGold/20 bg-ivoryWhite shadow-[0_24px_80px_rgba(7,24,39,0.2),0_8px_32px_rgba(7,24,39,0.12)]"
+            className="fixed bottom-24 right-3 z-[8999] flex h-[72vh] w-[calc(100vw-1.5rem)] flex-col overflow-hidden rounded-2xl border border-metallicGold/20 bg-ivoryWhite shadow-[0_24px_80px_rgba(7,24,39,0.2),0_8px_32px_rgba(7,24,39,0.12)] md:bottom-[5.5rem] md:right-[1.8rem] md:h-[560px] md:w-[380px]"
           >
             <header className="flex shrink-0 items-center justify-between bg-deepNavy px-5 py-4">
               <div>

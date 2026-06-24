@@ -13,7 +13,7 @@ export function PackagesSection() {
   const inView = useInView(ref, { once: true, amount: 0.12 });
 
   return (
-    <section ref={ref} className="bg-deepNavy py-[110px] text-ivoryWhite">
+    <section id="packages" ref={ref} className="bg-deepNavy py-[110px] max-md:py-[60px] max-md:pb-20 text-ivoryWhite">
       <div className="mx-auto w-full max-w-[1200px] px-8">
         <motion.p
           initial={{ opacity: 0, y: 40 }}
@@ -61,19 +61,12 @@ export function PackagesSection() {
           </p>
           <p>
             Simple monthly tiers - pricing stays flexible because every firm&apos;s scope, footprint, and data sources differ. We confirm the right package on
-            a fit call. For context, a London Compliance Officer often sits around £60,000–£75,000/year before on-costs.{" "}
-            <a
-              href="https://www.morganmckinley.com/uk/salary-guide/data/compliance-officer/london"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-metallicGold underline-offset-2 hover:underline"
-            >
-              (Morgan McKinley 2026)
-            </a>
+            a fit call. For many regulated SMEs, HIMAYA provides structured oversight at a fraction of the cost of adding senior internal compliance
+            headcount.
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-3 lg:items-stretch lg:gap-6">
+        <div className="mt-14 grid gap-8 max-lg:grid-cols-1 lg:grid-cols-3 lg:items-stretch lg:gap-6">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -107,8 +100,8 @@ export function PackagesSection() {
             <p className="mt-4 text-[0.8rem] leading-relaxed text-ivoryWhite/45">
               Light entry - no deep vCISO work, no heavy remediation.
             </p>
-            <BookDemoTrigger className="mt-8 w-full rounded-md border border-metallicGold/30 py-3 text-sm font-bold text-metallicGold transition-colors hover:bg-metallicGold/10">
-              Book a Fit Call
+            <BookDemoTrigger className="safe-bottom mt-8 w-full rounded-md border border-metallicGold/30 py-3 text-sm font-bold text-metallicGold transition-colors hover:bg-metallicGold/10">
+              Book a 15-Minute Demo
             </BookDemoTrigger>
           </motion.div>
 
@@ -116,7 +109,7 @@ export function PackagesSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease, delay: 0.35 }}
-            className="relative flex flex-col rounded-2xl border-2 border-metallicGold/50 bg-metallicGold/10 p-10 shadow-[0_0_60px_rgba(212,160,23,0.12),0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 lg:scale-[1.04]"
+            className="relative flex flex-col rounded-2xl border-2 border-metallicGold/50 bg-metallicGold/10 p-10 shadow-[0_0_60px_rgba(212,160,23,0.12),0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 lg:scale-[1.04] max-lg:scale-100"
           >
             <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-metallicGold to-luminousGold px-4 py-1 text-[0.72rem] font-bold text-deepNavy">
               MOST POPULAR
@@ -134,7 +127,7 @@ export function PackagesSection() {
             <div className="flex flex-1 flex-col gap-2">
               {[
                 "ATLAS",
-                "Human Firewall",
+                "Human Risk & Awareness Programme",
                 "Remediation / SLA tracking",
                 "Evidence status monitoring",
                 "Owner mapping",
@@ -146,8 +139,8 @@ export function PackagesSection() {
                 </ListItem>
               ))}
             </div>
-            <BookDemoTrigger className="mt-8 w-full rounded-md bg-gradient-to-br from-metallicGold to-luminousGold py-3 text-sm font-bold text-deepNavy transition hover:shadow-[0_10px_40px_rgba(212,160,23,0.4)]">
-              Book a Fit Call
+            <BookDemoTrigger className="safe-bottom mt-8 w-full rounded-md bg-gradient-to-br from-metallicGold to-luminousGold py-3 text-sm font-bold text-deepNavy transition hover:shadow-[0_10px_40px_rgba(212,160,23,0.4)]">
+              Book a 15-Minute Demo
             </BookDemoTrigger>
           </motion.div>
 
@@ -185,10 +178,10 @@ export function PackagesSection() {
               ))}
             </div>
             <p className="mt-4 text-[0.8rem] font-medium leading-relaxed text-metallicGold/90">
-              Premium tier - built for executives who need rhythm, narrative, and evidence in one place.
+              Built for senior leaders who need board-ready oversight, assurance rhythm, and evidence-backed decision-making.
             </p>
-            <BookDemoTrigger className="mt-8 w-full rounded-md border border-metallicGold/30 py-3 text-sm font-bold text-metallicGold transition-colors hover:bg-metallicGold/10">
-              Book a Fit Call
+            <BookDemoTrigger className="safe-bottom mt-8 w-full rounded-md border border-metallicGold/30 py-3 text-sm font-bold text-metallicGold transition-colors hover:bg-metallicGold/10">
+              Book a 15-Minute Demo
             </BookDemoTrigger>
           </motion.div>
         </div>

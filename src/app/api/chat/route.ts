@@ -30,6 +30,17 @@ function checkRateLimit(ip: string): Response | null {
   return null;
 }
 
+const CHAT_MODEL = process.env.ANTHROPIC_MODEL || "claude-sonnet-4-6";
+
+function anthropicErrorMessage(error: unknown): string {
+  if (error && typeof error === "object" && "error" in error) {
+    const nested = (error as { error?: { message?: string } }).error;
+    if (nested?.message) return nested.message;
+  }
+  if (error instanceof Error) return error.message;
+  return "Chat service unavailable.";
+}
+
 export async function POST(req: NextRequest) {
   try {
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "unknown";
@@ -54,15 +65,25 @@ export async function POST(req: NextRequest) {
 
     const recentMessages = messages.slice(-20).filter((m) => m.role === "user" || m.role === "assistant");
 
-    const stream = client.messages.stream({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 600,
-      system: HIMAYA_SYSTEM_PROMPT,
-      messages: recentMessages.map((m) => ({
-        role: m.role,
-        content: m.content,
-      })),
-    });
+    let stream;
+    try {
+      stream = client.messages.stream({
+        model: CHAT_MODEL,
+        max_tokens: 600,
+        system: HIMAYA_SYSTEM_PROMPT,
+        messages: recentMessages.map((m) => ({
+          role: m.role,
+          content: m.content,
+        })),
+      });
+    } catch (error) {
+      const message = anthropicErrorMessage(error);
+      console.error("Chat API error:", message);
+      return new Response(JSON.stringify({ error: message }), {
+        status: 402,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
 
     const encoder = new TextEncoder();
     const readable = new ReadableStream({
@@ -77,8 +98,11 @@ export async function POST(req: NextRequest) {
           controller.enqueue(encoder.encode("data: [DONE]\n\n"));
           controller.close();
         } catch (err) {
-          console.error("Stream error:", err);
-          controller.error(err);
+          const message = anthropicErrorMessage(err);
+          console.error("Stream error:", message);
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ error: message })}\n\n`));
+          controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+          controller.close();
         }
       },
     });

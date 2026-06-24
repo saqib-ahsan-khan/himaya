@@ -8,7 +8,7 @@ import { buildPageMetadata } from "@/lib/metadata";
 export const metadata = buildPageMetadata({
   title: "HIMAYA Services | GRC, vCISO Lite and Evidence-Based Compliance",
   description:
-    "Structured assurance services for regulated SMEs. ATLAS, Human Firewall, remediation tracking, evidence library and board reporting.",
+    "Structured assurance services for regulated SMEs. ATLAS, Human Risk & Awareness Programme, remediation tracking, evidence library and board reporting.",
   path: "/services",
 });
 
@@ -48,11 +48,11 @@ const services = [
   {
     no: "03",
     badge: "Behavioural Risk",
-    title: "Human Firewall Programme",
+    title: "Human Risk & Awareness Programme",
     desc: "Builds practical staff discipline around phishing, policy adherence and escalation behaviour in high-risk workflows.",
     points: [
       "Phishing simulations",
-      "Repeat offender identification",
+      "Repeat-risk user identification",
       "Mandatory training enforcement",
       "Management escalation",
       "GDPR and FCA awareness mapping",
@@ -100,7 +100,7 @@ const services = [
     title: "Board Reporting",
     desc: "Provides leadership-level outputs that summarise control posture, drift trends and remediation accountability in plain language.",
     points: [
-      "Monthly drift certificate",
+      "Monthly Control Drift Report",
       "Quarterly assurance pack",
       "Non-technical board language",
       "Posture trend over time",
@@ -118,7 +118,7 @@ export default function ServicesPage() {
       <PageHero
         label="OUR SERVICES"
         headline={"Six services. One continuous\nassurance system."}
-        subtext="Every service has a clear compliance value, defined output and named accountability. No vague cyber language."
+        subtext="Every HIMAYA service is designed to produce a clear assurance output: visibility, evidence, ownership, remediation tracking, or board-ready reporting."
       />
 
       <section className="bg-ivoryWhite py-24">
@@ -183,7 +183,7 @@ export default function ServicesPage() {
             ))}
           </div>
           <BookDemoTrigger className="mt-8 rounded-md bg-gradient-to-br from-metallicGold to-luminousGold px-7 py-3 font-bold text-deepNavy">
-            Book a 15-Minute Review
+            Book a 15-Minute Demo
           </BookDemoTrigger>
         </div>
       </section>

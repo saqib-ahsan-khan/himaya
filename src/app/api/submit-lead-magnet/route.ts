@@ -36,8 +36,8 @@ export async function POST(req: NextRequest) {
       fullName: data.fullName,
       workEmail: data.workEmail,
       companyName: data.companyName,
-      role: data.role,
-      consentStatus: data.consent,
+      role: data.role || "",
+      consentStatus: data.consent ?? false,
       consentTimestamp: now,
       downloadedChecklist: true,
       utmSource,
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       fullName: escapeHtml(data.fullName),
       workEmail: escapeHtml(data.workEmail),
       companyName: escapeHtml(data.companyName),
-      role: escapeHtml(data.role),
+      role: escapeHtml(data.role || ""),
     };
 
     await resend.emails.send({

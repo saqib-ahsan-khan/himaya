@@ -25,6 +25,7 @@ const alsoSupports = [
     title: "SRA-Regulated Law Firms",
     body: "Confidentiality obligations, client data handling, and evolving SRA cyber expectations require structured access and supplier governance.",
     badge: "SRA",
+    future: true,
   },
   {
     title: "Accounting Firms",
@@ -40,6 +41,7 @@ const alsoSupports = [
     title: "ISO 27001 Aspirants",
     body: "Firms pursuing certification need structured control implementation and evidence before engaging external auditors. HIMAYA builds the foundation.",
     badge: "ISO 27001",
+    future: true,
   },
 ];
 
@@ -57,7 +59,7 @@ export function WhoWeHelpSection() {
   const inView = useInView(ref, { once: true, amount: 0.15 });
 
   return (
-    <section ref={ref} className="bg-ivoryWhite py-[100px]">
+    <section ref={ref} className="bg-ivoryWhite py-[100px] max-md:py-[60px]">
       <div className="mx-auto w-full max-w-[1200px] px-8">
         <motion.p
           initial={{ opacity: 0, y: 40 }}
@@ -71,17 +73,15 @@ export function WhoWeHelpSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease, delay: 0.08 }}
-          className="mt-4 font-heading text-4xl font-bold leading-tight text-deepNavy md:text-5xl"
+          className="mobile-section-headline mt-4 font-heading text-4xl font-bold leading-tight text-deepNavy md:text-5xl"
         >
-          Built for regulated firms where
-          <br />
-          weak governance becomes exposure.
+          Built for regulated firms where control drift becomes regulatory exposure.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease, delay: 0.16 }}
-          className="mt-5 max-w-[580px] text-slateText"
+          className="mobile-long-text mt-5 max-w-[580px] text-slateText"
         >
           Initial focus: FCA-regulated SMEs with 10-100 employees, small compliance teams, MSP support and manual internal governance.
         </motion.p>
@@ -90,13 +90,13 @@ export function WhoWeHelpSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease, delay: 0.22 }}
-          className="relative mt-10 overflow-hidden rounded-2xl border border-metallicGold/30 bg-deepNavy p-10 shadow-[0_20px_60px_rgba(7,24,39,0.2)] transition-all duration-300 hover:border-metallicGold/60 hover:shadow-[0_24px_80px_rgba(7,24,39,0.3)]"
+          className="relative mt-10 w-full overflow-hidden rounded-2xl border border-metallicGold/30 bg-deepNavy p-10 shadow-[0_20px_60px_rgba(7,24,39,0.2)] transition-all duration-300 hover:border-metallicGold/60 hover:shadow-[0_24px_80px_rgba(7,24,39,0.3)] lg:max-w-[78%]"
         >
           <ShieldDecor className="pointer-events-none absolute bottom-4 right-4 h-20 w-20 text-metallicGold opacity-[0.08]" />
           <span className="inline-block rounded border border-metallicGold/25 bg-metallicGold/10 px-2.5 py-1 font-mono text-[0.62rem] tracking-[0.2em] text-metallicGold">
             PRIMARY FOCUS
           </span>
-          <h3 className="mt-4 font-heading text-[1.8rem] font-bold text-white">FCA-Regulated Financial Firms</h3>
+          <h3 className="mt-4 font-heading text-[1.8rem] font-bold text-white md:text-[2rem]">FCA-Regulated Financial Firms</h3>
           <p className="mt-4 max-w-[620px] text-[0.95rem] leading-[1.85] text-ivoryWhite/70">
             Operational resilience requirements, SMCR personal accountability, and SYSC governance obligations mean control drift is not just a risk - it is
             personal exposure for senior managers.
@@ -125,12 +125,17 @@ export function WhoWeHelpSection() {
               initial={{ opacity: 0, x: cornerInitials[idx].x, y: cornerInitials[idx].y }}
               animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
               transition={{ duration: 0.7, ease, delay: 0.35 + idx * 0.1 }}
-              className="rounded-xl border border-deepNavy/8 bg-white p-7 shadow-[0_2px_16px_rgba(7,24,39,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-metallicGold"
+              className="rounded-xl border border-deepNavy/8 bg-white p-5 shadow-[0_2px_12px_rgba(7,24,39,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-metallicGold/40 md:p-6"
             >
-              <span className="mb-2 inline-block font-mono text-[0.62rem] tracking-[0.18em] text-metallicGold">ALSO SUPPORTS</span>
-              <h4 className="text-[1.05rem] font-bold text-deepNavy">{card.title}</h4>
-              <p className="mt-2 text-[0.88rem] leading-[1.78] text-slateText">{card.body}</p>
-              <span className="mt-4 inline-block rounded-full bg-deepNavy px-3 py-1 text-[0.72rem] font-bold text-white">{card.badge}</span>
+              <div className="mb-2 flex flex-wrap items-center gap-2">
+                <span className="inline-block font-mono text-[0.62rem] tracking-[0.18em] text-mutedText">Also Supported</span>
+                {card.future && (
+                  <span className="rounded-full bg-deepNavy/8 px-2 py-0.5 font-mono text-[0.58rem] tracking-[0.1em] text-mutedText">Future</span>
+                )}
+              </div>
+              <h4 className="text-[1rem] font-bold text-deepNavy md:text-[1.05rem]">{card.title}</h4>
+              <p className="mt-2 text-[0.85rem] leading-[1.78] text-slateText">{card.body}</p>
+              <span className="mt-4 inline-block rounded-full bg-deepNavy/90 px-3 py-1 text-[0.72rem] font-bold text-white">{card.badge}</span>
             </motion.div>
           ))}
         </div>
