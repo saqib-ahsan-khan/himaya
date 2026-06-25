@@ -3,11 +3,13 @@ import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import { ConsentGoogleAnalytics } from "@/components/analytics/ConsentGoogleAnalytics";
 import { Providers } from "@/components/Providers";
 import { LayoutSwitcher } from "@/components/layout/LayoutSwitcher";
-import { OrganizationJsonLd } from "@/components/seo/JsonLd";
+import { OrganisationSchema, WebSiteSchema } from "@/components/seo/JsonLd";
 import { CookieNotice } from "@/components/ui/CookieNotice";
 import "./globals.css";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://himaya.uk";
+import { getSiteUrl } from "@/lib/site-url";
+
+const BASE_URL = getSiteUrl();
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -26,6 +28,12 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
+  alternates: {
+    canonical: BASE_URL,
+    languages: {
+      "en-GB": BASE_URL,
+    },
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -38,9 +46,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}>
+    <html lang="en-GB" className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}>
       <head>
-        <OrganizationJsonLd />
+        <OrganisationSchema />
+        <WebSiteSchema />
       </head>
       <body className="min-h-full font-subheading text-slateText">
         <Providers>

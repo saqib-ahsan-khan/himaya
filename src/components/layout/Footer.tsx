@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FooterBookLink } from "@/components/layout/FooterBookLink";
 
@@ -36,16 +37,14 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="space-y-4">
             <div className="flex items-center">
-              <picture>
-                <source srcSet="/assets/images/logos/himaya-logo.png" type="image/png" />
-                <img
-                  src="/assets/images/logos/himaya-logo.png"
-                  alt="HIMAYA logo"
-                  width={240}
-                  height={64}
-                  className="h-14 w-auto max-w-[240px] object-contain"
-                />
-              </picture>
+              <Image
+                src="/assets/images/logos/himaya-logo.png"
+                alt="HIMAYA logo — regulatory assurance platform UK"
+                width={240}
+                height={64}
+                loading="lazy"
+                className="h-14 w-auto max-w-[240px] object-contain"
+              />
             </div>
             <p className="font-subheading text-sm text-ivoryWhite/70">
               From Risk to Readiness - Powered by AI. Protected by HIMAYA

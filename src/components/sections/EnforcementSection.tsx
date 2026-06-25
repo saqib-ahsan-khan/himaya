@@ -132,6 +132,7 @@ export function EnforcementSection() {
                 href={c.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                title={`View official FCA press release: ${c.firm}`}
                 className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-metallicGold hover:underline"
               >
                 View FCA source
@@ -150,7 +151,7 @@ export function EnforcementSection() {
         </div>
 
         <Link href="/enforcement-lessons" className="mt-4 inline-flex items-center gap-1 text-base font-semibold text-metallicGold hover:underline">
-          See all enforcement lessons
+          Read FCA Enforcement Analysis
           <GoldArrow size={16} />
         </Link>
       </div>

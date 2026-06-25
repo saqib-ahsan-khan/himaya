@@ -228,10 +228,22 @@ export function ArticleDetailView({
                     Book a Readiness Call
                   </BookDemoTrigger>
                   <Link
+                    href="/atlas"
+                    className="rounded-md border border-metallicGold/35 px-6 py-2.5 text-sm font-semibold text-ivoryWhite transition hover:bg-metallicGold/10"
+                  >
+                    See How ATLAS Detects Control Drift
+                  </Link>
+                  <Link
+                    href="/#packages"
+                    className="rounded-md border border-metallicGold/35 px-6 py-2.5 text-sm font-semibold text-ivoryWhite transition hover:bg-metallicGold/10"
+                  >
+                    View HIMAYA Service Packages
+                  </Link>
+                  <Link
                     href="/#control-drift-checklist"
                     className="rounded-md border border-metallicGold/35 px-6 py-2.5 text-sm font-semibold text-ivoryWhite transition hover:bg-metallicGold/10"
                   >
-                    Download Control Checklist
+                    Download Control Drift Checklist
                   </Link>
                 </div>
               </div>
@@ -239,7 +251,13 @@ export function ArticleDetailView({
 
             <section className="mb-8">
               <SectionLabel>Source</SectionLabel>
-              <a href={article.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center text-[0.8rem] text-metallicGold hover:underline">
+              <a
+                href={article.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View official FCA source document"
+                className="inline-flex items-center text-[0.8rem] text-metallicGold hover:underline"
+              >
                 {article.sourceUrl}
                 <ExternalLink size={14} className="ml-1" aria-hidden />
               </a>

@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://himaya.uk";
+import { getSiteUrl } from "@/lib/site-url";
+
+const BASE = getSiteUrl();
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,9 +10,14 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin/", "/api/", "/thank-you"],
+        disallow: ["/admin/", "/api/", "/thank-you", "/_next/", "/static/"],
+      },
+      {
+        userAgent: ["GPTBot", "ChatGPT-User", "CCBot", "anthropic-ai", "Claude-Web", "Google-Extended"],
+        disallow: "/",
       },
     ],
     sitemap: `${BASE}/sitemap.xml`,
+    host: BASE,
   };
 }

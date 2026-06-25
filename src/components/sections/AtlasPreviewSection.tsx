@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Activity, Clock3, FileCheck2, FileText, Shield, UserCheck } from "lucide-react";
@@ -62,6 +63,9 @@ export function AtlasPreviewSection() {
         <p className="mt-3 text-xs italic text-ivoryWhite/50">
           Dashboard visuals are representative; final configuration depends on client scope and data sources.
         </p>
+        <Link href="/atlas" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-metallicGold hover:underline">
+          See How ATLAS Detects Control Drift
+        </Link>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           <Card delay={0}>

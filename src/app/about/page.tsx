@@ -2,13 +2,21 @@ import { BookDemoTrigger } from "@/components/BookDemoTrigger";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { GreenCheck, RedX } from "@/components/ui/Icons";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "About HIMAYA | Our Mission and Approach",
+export const metadata = buildMetadata({
+  title: "About HIMAYA — Why Continuous Regulatory Assurance Matters",
   description:
-    "Why HIMAYA exists and how we help regulated SMEs move from reactive compliance to continuous regulatory assurance.",
+    "HIMAYA was built because regulated SMEs face the same FCA compliance pressure as large firms but rarely have the internal infrastructure. We provide continuous assurance without the overhead.",
   path: "/about",
+  keywords: [
+    "what is HIMAYA",
+    "FCA compliance company UK",
+    "regulatory assurance company UK",
+    "compliance support FCA SME",
+    "control drift what is it",
+    "HIMAYA regulatory assurance",
+  ],
 });
 
 const gapStats = [

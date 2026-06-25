@@ -1,10 +1,17 @@
 import { PageHero } from "@/components/ui/PageHero";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "Resources | HIMAYA",
-  description: "Guides and resources for governance, control drift and evidence discipline.",
+export const metadata = buildMetadata({
+  title: "HIMAYA Resources — Control Drift and FCA Compliance Guides",
+  description:
+    "Practical resources for FCA-regulated SMEs: control drift checklists, evidence readiness guides and regulatory assurance tools from HIMAYA.",
   path: "/resources",
+  keywords: [
+    "FCA compliance resources",
+    "control drift checklist",
+    "regulatory evidence management",
+    "how to prepare for FCA audit evidence",
+  ],
 });
 
 export default function ResourcesPage() {

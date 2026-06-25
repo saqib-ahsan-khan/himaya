@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
@@ -34,7 +35,7 @@ function SidebarContent({
     <>
       <div className="border-b border-metallicGold/12 p-6">
         <Link href="/admin/dashboard">
-          <img src="/assets/images/logos/himaya-logo.png" alt="HIMAYA" className="h-8 w-auto brightness-0 invert" />
+          <Image src="/assets/images/logos/himaya-logo.png" alt="HIMAYA" width={160} height={32} className="h-8 w-auto brightness-0 invert" />
         </Link>
         <p className="mt-2 font-mono text-[0.62rem] tracking-[0.2em] text-[rgba(255,253,247,0.4)]">ADMIN PANEL</p>
       </div>

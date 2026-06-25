@@ -1,16 +1,27 @@
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import Link from "next/link";
 import { BookDemoTrigger } from "@/components/BookDemoTrigger";
 import { AtlasDashboardPreview } from "@/components/sections/AtlasDashboardPreview";
 import { GoldCheck } from "@/components/ui/Icons";
 import ListItem from "@/components/ui/ListItem";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "ATLAS | Regulatory Assurance Dashboard by HIMAYA",
+export const metadata = buildMetadata({
+  title: "ATLAS — Regulatory Assurance Dashboard for Regulated Firms",
   description:
-    "Real-time control drift detection, evidence status, remediation owners, SLA deadlines and regulator-mapped posture for regulated firms.",
+    "ATLAS by HIMAYA tracks control drift, evidence status, remediation owners, SLA deadlines and regulatory posture in real time. Built for FCA-regulated SMEs.",
   path: "/atlas",
+  keywords: [
+    "regulatory assurance dashboard",
+    "control drift monitoring platform",
+    "FCA compliance dashboard UK",
+    "evidence tracking regulated firms",
+    "ATLAS regulatory platform",
+    "compliance posture monitoring",
+    "SLA remediation tracker",
+    "control drift detection",
+  ],
 });
 
 const capabilities = [
@@ -50,7 +61,7 @@ export default function AtlasPage() {
     <>
       <PageHero
         label="ATLAS PLATFORM"
-        headline={"A live control environment.\nNot a dashboard."}
+        headline={"A live control environment\nfor regulated firms."}
         subtext="ATLAS is a Continuous Regulatory Posture Assurance System built around controls, evidence, ownership, remediation and defensibility."
       />
       <section className="-mt-8 bg-deepNavy pb-10">
@@ -64,9 +75,9 @@ export default function AtlasPage() {
           <div>
             <SectionLabel text="WHAT ATLAS IS" />
             <p className="mt-5 text-[0.98rem] leading-[1.9] text-slateText">
-              ATLAS is not a generic security dashboard. It does not replace your SIEM, SOC or firewall. It exists to answer the question
-              regulators actually ask: are your controls operating as documented, who owns them, when were they last evidenced, and what happens when
-              they drift?
+              ATLAS is not a generic security dashboard or FCA compliance dashboard bolt-on. It delivers continuous control drift detection, regulatory
+              posture visibility, evidence tracking and remediation ownership — answering what regulators ask: are your controls operating as documented,
+              who owns them, when were they last evidenced, and what happens when they drift?
             </p>
             <div className="mt-7 space-y-3">
               {capabilities.map((cap) => (
@@ -129,6 +140,17 @@ export default function AtlasPage() {
           <BookDemoTrigger className="mt-8 rounded-md bg-gradient-to-br from-metallicGold to-luminousGold px-8 py-3 font-bold text-deepNavy">
             Book an Assurance Review
           </BookDemoTrigger>
+          <div className="mt-6 flex flex-wrap gap-4 text-sm">
+            <Link href="/services" className="font-semibold text-metallicGold hover:underline">
+              View HIMAYA Service Packages
+            </Link>
+            <Link href="/fca-insights" className="font-semibold text-metallicGold hover:underline">
+              Read FCA Enforcement Analysis
+            </Link>
+            <Link href="/#packages" className="font-semibold text-metallicGold hover:underline">
+              See HIMAYA Pricing Tiers
+            </Link>
+          </div>
         </div>
       </section>
     </>

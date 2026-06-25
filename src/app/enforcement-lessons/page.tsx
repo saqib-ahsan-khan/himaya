@@ -1,10 +1,20 @@
 import { PageHero } from "@/components/ui/PageHero";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "Enforcement Lessons | HIMAYA",
-  description: "Regulatory enforcement patterns and practical governance lessons for regulated SMEs.",
+export const metadata = buildMetadata({
+  title: "FCA Enforcement Lessons — Real Cases, Real Consequences",
+  description:
+    "Real FCA enforcement cases showing the pattern of control failures, monitoring gaps, evidence weaknesses and remediation delays that lead to regulatory action.",
   path: "/enforcement-lessons",
+  keywords: [
+    "FCA enforcement cases UK",
+    "FCA fines analysis",
+    "FCA control failure lessons",
+    "regulatory enforcement UK SME",
+    "AML control failures FCA",
+    "financial crime FCA penalties",
+    "FCA enforcement lessons for SMEs",
+  ],
 });
 
 export default function EnforcementLessonsPage() {

@@ -1,5 +1,5 @@
-import { FAQJsonLd } from "@/components/seo/JsonLd";
-import { buildPageMetadata } from "@/lib/metadata";
+import { FAQSchema, ServiceSchema } from "@/components/seo/JsonLd";
+import { buildMetadata } from "@/lib/seo";
 import { Hero } from "@/components/sections/Hero";
 import { AtlasPreviewSection } from "@/components/sections/AtlasPreviewSection";
 import { ControlDriftSection } from "@/components/sections/ControlDriftSection";
@@ -12,17 +12,28 @@ import { ProblemSection } from "@/components/sections/ProblemSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { WhoWeHelpSection } from "@/components/sections/WhoWeHelpSection";
 
-export const metadata = buildPageMetadata({
-  title: "HIMAYA - Continuous Regulatory Assurance for Regulated SMEs",
+export const metadata = buildMetadata({
+  title: "HIMAYA — Continuous Regulatory Assurance for FCA-Regulated SMEs",
   description:
-    "Detect control drift, track remediation, capture evidence and improve board-level regulatory visibility. For FCA-regulated SMEs.",
+    "HIMAYA helps FCA-regulated firms detect control drift, track remediation ownership, capture evidence and maintain board-level regulatory visibility — without reactive audit scramble.",
   path: "/",
+  keywords: [
+    "FCA compliance support for SMEs",
+    "control drift detection",
+    "regulatory assurance platform UK",
+    "FCA governance support",
+    "remediation tracking FCA",
+    "ATLAS regulatory dashboard",
+    "continuous compliance monitoring UK",
+    "FCA regulated SME compliance",
+  ],
 });
 
 export default function Home() {
   return (
     <>
-      <FAQJsonLd />
+      <FAQSchema />
+      <ServiceSchema />
       <Hero />
       <ProblemSection />
       <ControlDriftSection />

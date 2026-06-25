@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -110,18 +111,16 @@ export function Navbar() {
           }`}
         >
           <Link href="/" className="flex items-center">
-            <picture>
-              <source srcSet="/assets/images/logos/himaya-logo.png" type="image/png" />
-              <img
-                src="/assets/images/logos/himaya-logo.png"
-                alt="HIMAYA logo"
-                width={240}
-                height={64}
-                className={`h-14 w-auto max-w-[240px] object-contain transition-transform duration-300 ${
-                  isScrolled ? "max-md:h-[3rem] max-md:scale-[0.85]" : ""
-                }`}
-              />
-            </picture>
+            <Image
+              src="/assets/images/logos/himaya-logo.png"
+              alt="HIMAYA logo — continuous regulatory assurance for FCA-regulated SMEs"
+              width={240}
+              height={64}
+              priority
+              className={`h-14 w-auto max-w-[240px] object-contain transition-transform duration-300 ${
+                isScrolled ? "max-md:h-[3rem] max-md:scale-[0.85]" : ""
+              }`}
+            />
           </Link>
 
           <ul className="hidden items-center gap-7 md:flex">

@@ -4,13 +4,22 @@ import { FcaInsightsHero } from "@/components/fca-insights/FcaInsightsHero";
 import { FcaInsightsListing } from "@/components/fca-insights/FcaInsightsListing";
 import { serializeArticle } from "@/lib/articles";
 import { getFeaturedArticles, getPublishedArticles } from "@/lib/articles-server";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "FCA Regulatory Insights | HIMAYA",
+export const metadata = buildMetadata({
+  title: "FCA Regulatory Insights — Enforcement Lessons for Regulated Firms",
   description:
-    "Latest FCA enforcement actions, regulatory updates and compliance lessons for UK regulated SMEs. Understand what went wrong and what your firm should do differently.",
+    "Latest FCA enforcement actions, fines and regulatory updates turned into practical compliance lessons for UK regulated SMEs. Understand what went wrong and what your firm should do differently.",
   path: "/fca-insights",
+  keywords: [
+    "FCA enforcement lessons",
+    "FCA fines 2025 2026",
+    "FCA regulated firm lessons",
+    "FCA enforcement analysis UK",
+    "FCA press release summary",
+    "compliance lessons regulated SMEs",
+    "FCA action what went wrong",
+  ],
 });
 
 export default async function FcaInsightsPage() {

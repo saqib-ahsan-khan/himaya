@@ -3,13 +3,22 @@ import { GoldDash } from "@/components/ui/Icons";
 import ListItem from "@/components/ui/ListItem";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "Industries | HIMAYA Regulated Assurance",
+export const metadata = buildMetadata({
+  title: "Industries HIMAYA Serves — FCA, SRA, ICO and ISO 27001",
   description:
-    "HIMAYA serves FCA-regulated firms, law firms, accounting firms and UK GDPR-sensitive SMEs with continuous regulatory assurance.",
+    "HIMAYA primarily serves FCA-regulated financial firms. We also support SRA law firms, accounting firms, UK GDPR-sensitive SMEs and ISO 27001 aspirants.",
   path: "/industries",
+  keywords: [
+    "FCA regulated firm compliance support",
+    "SRA law firm compliance",
+    "accounting firm data protection",
+    "UK GDPR compliance SME",
+    "ISO 27001 evidence readiness UK",
+    "Consumer Duty compliance support",
+    "SMCR compliance support",
+  ],
 });
 
 const industries = [

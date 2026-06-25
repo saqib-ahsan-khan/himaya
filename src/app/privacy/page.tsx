@@ -1,7 +1,7 @@
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "Privacy Policy | HIMAYA",
+export const metadata = buildMetadata({
+  title: "Privacy Policy — HIMAYA Data Protection",
   description: "HIMAYA privacy policy — how we collect, use and protect your data in accordance with UK GDPR.",
   path: "/privacy",
 });

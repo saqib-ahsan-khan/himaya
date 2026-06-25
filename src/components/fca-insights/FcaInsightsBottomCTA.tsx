@@ -14,10 +14,16 @@ export function FcaInsightsBottomCTA() {
             Book a Readiness Call
           </BookDemoTrigger>
           <Link
-            href="/#control-drift-checklist"
+            href="/atlas"
             className="rounded-md border border-metallicGold/35 px-8 py-3 text-sm font-semibold text-[rgba(255,253,247,0.85)] transition hover:border-metallicGold hover:bg-metallicGold/6"
           >
-            Download Control Drift Checklist
+            See How ATLAS Detects Control Drift
+          </Link>
+          <Link
+            href="/#packages"
+            className="rounded-md border border-metallicGold/35 px-8 py-3 text-sm font-semibold text-[rgba(255,253,247,0.85)] transition hover:border-metallicGold hover:bg-metallicGold/6"
+          >
+            View HIMAYA Service Packages
           </Link>
         </div>
       </div>

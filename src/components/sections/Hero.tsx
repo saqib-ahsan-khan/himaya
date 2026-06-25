@@ -9,7 +9,7 @@ import { DotAmber, DotRed, GreenCheck, MidDot, WarnIcon } from "@/components/ui/
 
 const headlineLines = [
   { text: "Continuous Regulatory Assurance", accent: false },
-  { text: "for Regulated SMEs", accent: false },
+  { text: "for FCA-Regulated SMEs", accent: false },
 ];
 
 const heroSubtext =

@@ -1,7 +1,7 @@
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "Terms of Service | HIMAYA",
+export const metadata = buildMetadata({
+  title: "Terms of Service — HIMAYA",
   description: "HIMAYA terms of service including service scope, limitations and governing law.",
   path: "/terms",
 });

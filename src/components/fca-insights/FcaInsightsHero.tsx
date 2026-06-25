@@ -13,9 +13,9 @@ export function FcaInsightsHero() {
       <div className="mx-auto w-full max-w-[1200px] px-6">
         <SectionLabel text="FCA REGULATORY INSIGHTS" />
         <h1 className="mt-6 max-w-3xl font-heading text-[3rem] font-bold leading-tight">
-          FCA Enforcement Lessons.
+          FCA Regulatory Insights for Regulated Firms.
           <br />
-          Practical Business Insight.
+          Enforcement Lessons That Matter.
         </h1>
         <p className="mt-6 max-w-[640px] text-[1.03rem] leading-[1.85] text-[rgba(255,253,247,0.65)]">
           We turn FCA news, fines, warnings and regulatory updates into practical lessons for regulated SMEs. Understand what went wrong, what

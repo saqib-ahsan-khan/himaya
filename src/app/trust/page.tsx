@@ -2,13 +2,18 @@ import { GreenCheck, GoldShieldCheck, MutedDash } from "@/components/ui/Icons";
 import ListItem from "@/components/ui/ListItem";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { buildPageMetadata } from "@/lib/metadata";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "Trust & Security | HIMAYA",
+export const metadata = buildMetadata({
+  title: "Trust & Security — How HIMAYA Handles Your Data",
   description:
-    "How HIMAYA handles website data, protects form submissions and maintains security hygiene on our platform.",
+    "How HIMAYA manages website data, protects form submissions and maintains security hygiene. HTTPS, Firebase EU data region, no sensitive evidence via public forms.",
   path: "/trust",
+  keywords: [
+    "HIMAYA data security",
+    "compliance company data handling",
+    "GDPR compliant website UK",
+  ],
 });
 
 const dataHandling = [

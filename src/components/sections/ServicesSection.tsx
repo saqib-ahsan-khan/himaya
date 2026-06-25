@@ -14,6 +14,15 @@ import {
 } from "@/components/ui/Icons";
 import ListItem from "@/components/ui/ListItem";
 
+const serviceLinkLabels: Record<string, string> = {
+  "ATLAS Regulatory Assurance": "See How ATLAS Detects Control Drift",
+  "vCISO Lite / Monthly Oversight": "View vCISO Lite UK Oversight",
+  "Human Risk & Awareness Programme": "Explore Human Risk & Awareness Programme",
+  "Remediation & SLA Tracking": "View Remediation & SLA Tracking",
+  "Evidence Library": "See Regulatory Evidence Management",
+  "Board Reporting": "View Board-Level Regulatory Reporting",
+};
+
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const services = [
@@ -128,7 +137,7 @@ export function ServicesSection() {
                 ))}
               </div>
               <Link href="/services" className="mt-4 inline-flex items-center gap-1 text-sm text-metallicGold hover:underline">
-                Learn more
+                {serviceLinkLabels[service.name] ?? "View HIMAYA Service Packages"}
                 <GoldArrow size={14} />
               </Link>
             </motion.div>

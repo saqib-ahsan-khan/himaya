@@ -3,13 +3,24 @@ import { GoldArrow, MutedX } from "@/components/ui/Icons";
 import ListItem from "@/components/ui/ListItem";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { buildPageMetadata } from "@/lib/metadata";
+import { ServiceSchema } from "@/components/seo/JsonLd";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildPageMetadata({
-  title: "HIMAYA Services | GRC, vCISO Lite and Evidence-Based Compliance",
+export const metadata = buildMetadata({
+  title: "HIMAYA Services — GRC, vCISO Lite and Evidence-Based Compliance",
   description:
-    "Structured assurance services for regulated SMEs. ATLAS, Human Risk & Awareness Programme, remediation tracking, evidence library and board reporting.",
+    "Six structured assurance services for regulated SMEs: ATLAS platform, vCISO Lite, Human Risk & Awareness Programme, remediation tracking, evidence library and board reporting.",
   path: "/services",
+  keywords: [
+    "vCISO lite UK",
+    "GRC services FCA firms",
+    "regulatory evidence management",
+    "compliance board reporting UK",
+    "human firewall FCA compliance",
+    "remediation SLA tracking",
+    "evidence library compliance",
+    "FCA compliance monitoring",
+  ],
 });
 
 const services = [
@@ -115,6 +126,7 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
+      <ServiceSchema />
       <PageHero
         label="OUR SERVICES"
         headline={"Six services. One continuous\nassurance system."}
